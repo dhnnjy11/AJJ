@@ -1,0 +1,26 @@
+﻿{
+  "clientcredential": {
+    "subject": "Login into Account",
+    "content": " Your username is : $username$ <br/> Your password is $password$ <br/> "
+  },
+  "confirmtoadmin": {
+    "subject": "Login into Account",
+    "content": " Your username is : $username$ <br/> Your password is $password$ <br/> "
+  },
+  "erroremail": {
+    "subject": "Error in Sending",
+    "content": "There is error in sending message to the user <br/> Exception is : <br/> $error$"
+  },
+  "jobapply2": {
+    "subject": "Successfully apply for job",
+    "content": "Congratulation! You have successfully registered for <b>$jobtitle$</b> job, We will contact you soon"
+  },
+  "jobapply": {
+    "subject": "Thank you for apply",
+    "content": "<b>Dear $candidatename$</b>,<br/><br/>Thank you for applying for the position of <b>$jobtitle$</b> in the <b>$companyname$</b>, I wanted to let you know that we are in the process of reviewing applications, We will notify you on the status of your application soon.<br/><br/>株式会社オールジョブスジャパン<br/>All Jobs Japan<br/><a href='www.jobsjapan.net'>www.jobsjapan.net</a>"
+  },
+  "candidateregistered": {
+    "subject": "Thank You for your registration",
+    "content": "Dear applicant, <br/> kindly note the registration is not finish yet<br/> Please click on this URL to complete registration.<br/>以下URLをクリックして登録を完了させてください<br/>"
+  }
+}

@@ -1,0 +1,42 @@
+﻿@using Ajj.Areas.Clients.Models
+
+@model ChangeUserNameViewModel
+@{
+    ViewData["Title"] = "ChangeUserName";
+    Layout = "~/Areas/Clients/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="medium-title">
+   ユーザー名変更
+</h2>
+<div asp-validation-summary="All" class="text-danger"></div>
+<form method="post" asp-area="clients" asp-controller="home" asp-action="ChangeUsername">
+    @if (ViewData["message"] != null)
+    {
+        <br />
+        <div class="row">
+            <div class="col-md-5">
+                <p class="alert alert-danger">@ViewData["message"]</p>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="User Name" class="control-label required">
+                    ユーザー名
+                </label>
+                <input type="text" asp-for="UserName" placeholder="" class="form-control" required>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group">
+                <button type="submit" class="btn btn-common">
+                    保存
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

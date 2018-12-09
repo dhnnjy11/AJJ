@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "List";
+}
+
+<div class="row">
+
+    <div class="col-md-12">
+        <h3>Jobs</h3>
+
+        <br />
+        <a href="#" style="border-radius: 10px;width:150px" class="btn btn-success btn-lg province">Tokyo</a>&nbsp;
+        <a href="#" style="border-radius: 10px;width:150px" class="btn btn-success btn-lg province">Chiba</a>&nbsp;
+        <a href="#" style="border-radius: 10px;width:150px" class="btn btn-success btn-lg province">Gunma</a>&nbsp;
+        <a href="#" style="border-radius: 10px;width:150px" class="btn btn-success btn-lg province">Ibaraki</a>&nbsp;
+        <a href="#" style="border-radius: 10px;width:150px" class="btn btn-success btn-lg province">Kanagawa</a>&nbsp;
+        <a href="#" style="border-radius: 10px;width:150px" class="btn btn-success btn-lg province">Saitma</a>&nbsp;
+        <a href="#" style="border-radius: 10px;width:150px" class="btn btn-success btn-lg province">Tochigi</a>&nbsp;
+    </div>
+</div>
+
+@section Script{
+    <script>
+        alert(1);
+        var a = $('a[class="province"]').text();
+        alert(a);
+    </script>
+}

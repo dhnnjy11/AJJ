@@ -1,0 +1,50 @@
+﻿@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error !</strong> @TempData["error"]
+    </div>
+
+}
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success !</strong> @TempData["success"]
+    </div>
+
+}
+@if (TempData["warning"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Warning !</strong> @TempData["warning"]
+    </div>
+
+}
+<!--View Data Error Message-->
+@if (ViewData["error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error !</strong> @ViewData["error"]
+    </div>
+
+}
+
+@if (ViewData["success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success !</strong> @ViewData["success"]
+    </div>
+
+}
+@if (ViewData["warning"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Warning !</strong> @ViewData["warning"]
+    </div>
+
+}

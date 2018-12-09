@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Ajj</title>
+
+    @*<environment include="Development">*@
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/assets/img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/assets/css/jasny-bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/assets/css/bootstrap-select.min.css" type="text/css">
+    <!-- Material CSS -->
+    @*<link rel="stylesheet" href="~/assets/css/material-kit.css" type="text/css">*@
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="~/assets/fonts/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/assets/fonts/themify-icons.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="~/assets/extras/animate.css" type="text/css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="~/assets/extras/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="~/assets/extras/owl.theme.css" type="text/css">
+    <!-- Rev Slider CSS -->
+    <link rel="stylesheet" href="~/assets/extras/settings.css" type="text/css">
+    <!-- Slicknav js -->
+    <link rel="stylesheet" href="~/assets/css/slicknav.css" type="text/css">
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="~/assets/css/main.css" type="text/css">
+    <!-- Responsive CSS Styles -->
+    <link rel="stylesheet" href="~/assets/css/responsive.css" type="text/css">
+    <link href="~/assets/css/datatables.css" rel="stylesheet" />
+    <link href="~/assets/css/select.dataTables.min.css" rel="stylesheet" />
+
+    <!-- Color CSS Styles  -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/colors/red.css" media="screen" />
+
+    @*</environment>
+        <environment exclude="Development">
+            <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        </environment>*@
+</head>
+<body>
+
+    <!-- Header Section Start -->
+    <div class="header">
+        <!-- Start intro section -->
+        <section id="intro" class="section-intro">
+            <div class="logo-menu">
+                <nav class="navbar navbar-default" role="navigation" data-spy="affix" data-offset-top="50">
+                    <div class="container">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand logo" href="/">
+                                <img src="/assets/img/logo.png" alt="" style="width:67px">
+                            </a>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="navbar">
+                            <!-- Start Navigation List -->
+
+                            @await Html.PartialAsync("~/Areas/Admin/Views/Shared/_AdminMenu.cshtml")
+                            @await Html.PartialAsync("~/Areas/Admin/Views/Shared/_AdminLoginPartial.cshtml")
+                        </div>
+                    </div>
+                    <!-- Mobile Menu Start -->
+                    <ul class="wpb-mobile-menu">
+                        <li>
+                            <a is-active-route asp-area="Admin" asp-controller="Client" asp-action="Index">Potential Clients</a>
+                        </li>
+                        <li>
+                            <a is-active-route asp-area="Admin" asp-controller="Client" asp-action="List">
+                                Registered Clients
+                            </a>
+                        </li>
+                        <li>
+                            <a is-active-route asp-area="User" asp-controller="JobApplications" asp-action="IndexAsync">
+                                Job List
+                            </a>
+                        </li>
+                        <li>
+                            <a is-active-route asp-area="Admin" asp-controller="User" asp-action="All">
+                                User List
+                            </a>
+                        </li>
+                        @*<li>
+            <a is-active-route asp-area="Admin" asp-controller="User" asp-action="Register">
+                Register User
+            </a>
+        </li>*@
+                        @*<li>
+            <a href="#">
+                Manage User
+            </a>
+            <ul>
+                <li>
+                    <a href="#">
+                        Job Seekers
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Register New User
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Manage Role
+                    </a>
+                </li>
+            </ul>
+        </li>*@
+                    </ul>
+                    <!-- Mobile Menu End -->
+                </nav>
+            </div>
+            @if (Convert.ToBoolean(ViewData["HeaderSearch"]) == true)
+            {
+                @await Html.PartialAsync("_ClientMenu")
+            }
+            <!-- Header Section End -->
+        </section>
+        <!-- end intro section -->
+    </div>
+
+    <!-- Infobox Section End -->
+    <div class="container">
+        <br />
+        @RenderBody()
+        <br />
+        <br />
+    </div>
+    <!-- Footer Section Start -->
+    <footer>
+        <!-- Footer Area Start -->
+        <!-- Footer area End -->
+        <!-- Copyright Start  -->
+        <div id="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="site-info text-center">
+                            <p>Copyright &copy; 2018　<a rel="nofollow" href="http://www.jobsjapan.net">All Jobs Japan Co., Ltd.</a> All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+    </footer>
+    <!-- Footer Section End -->
+    <!-- Go To Top Link -->
+    <a href="#" class="back-to-top">
+        <i class="ti-arrow-up"></i>
+    </a>
+
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+                <div class="object" id="object_four"></div>
+                <div class="object" id="object_five"></div>
+                <div class="object" id="object_six"></div>
+                <div class="object" id="object_seven"></div>
+                <div class="object" id="object_eight"></div>
+            </div>
+        </div>
+    </div>
+
+    @*<environment include="Development">*@
+    <!-- Main JS  -->
+    <script type="text/javascript" src="~/assets/js/jquery-min.js"></script>    
+    <script type="text/javascript" src="~/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/material.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/material-kit.js"></script>
+    <script type="text/javascript" src="~/assets/js/jquery.parallax.js"></script>
+    <script type="text/javascript" src="~/assets/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/jquery.slicknav.js"></script>
+    <script type="text/javascript" src="~/assets/js/main.js"></script>
+    <script type="text/javascript" src="~/assets/js/jquery.counterup.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/waypoints.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/jasny-bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/form-validator.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/contact-form-script.js"></script>
+    <script src="~/assets/js/datatables.js"></script>
+    <script src="~/assets/js/dataTables.select.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/helper.js"></script>
+    @*</environment>
+        <environment exclude="Development">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+            </script>
+            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+            </script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
+        </environment>*@
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

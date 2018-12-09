@@ -1,0 +1,182 @@
+﻿@using Ajj.Models.HomeViewModel;
+@model ContactViewModel
+@{
+    ViewData["Title"] = "Contact Us";
+
+}
+@section additionalMeta {
+    <meta name="keywords" content="All Jobs Japan, Contact Us, Work in Japan, jobs for foreigners" />
+    <meta name="description" content="Contact us regarding any query for job, visa sponsorship">
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h2 class="medium-title">
+                @ViewData["Title"]
+            </h2>
+            <br />
+        </div>
+    </div>
+
+    @await Html.PartialAsync("_AlertPartial")
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <form class="form-horizontal" asp-controller="Home" asp-action="Contact">
+                <div class="form-group">
+                    <label for="companyName" class="control-label col-md-2 required">Company Name</label>
+                    <div class="col-sm-6 col-xs-12">
+                        <input type="text" id="companyName" asp-for="CompanyName" placeholder="" class="form-control" required data-error="Please enter your name" autofocus>
+                        <span asp-validation-for="CompanyName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="personInCharge" class="control-label col-md-2 required">Person In Charge</label>
+                    <div class="col-sm-6 col-xs-12">
+                        <input type="text" id="personInCharge" asp-for="PersonIncharge" placeholder="" class="form-control" required data-error="Please enter person in charge name" autofocus>
+                        <span asp-validation-for="PersonIncharge" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Phone" class="control-label col-md-2 required">Phone</label>
+                    <div class="col-sm-6 col-xs-12">
+                        <input type="text" id="Phone" asp-for="Phone" placeholder="" class="form-control" required data-error="Please enter phone" pattern="^[0-9]{10,15}$" title="Phone number must be 10 to 15 digit long!" autofocus>
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Email" class="control-label col-md-2 required">Email Address</label>
+                    <div class="col-sm-6 col-xs-12">
+                        <input type="email" id="Email" asp-for="EmailAddress" placeholder="" class="form-control" required data-error="Please enter email" autofocus>
+                        <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ConfirmEmail" class="control-label col-md-2 required">Confirm Email Address</label>
+                    <div class="col-sm-6 col-xs-12">
+                        <input type="email" id="ConfirmEmail" asp-for="ConfirmEmail" placeholder="" class="form-control" required data-error="Please enter confirm email" autofocus>
+                        <span asp-validation-for="ConfirmEmail" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ContentSection" class="control-label col-md-2 required">Content Section</label>
+                    <div class="col-sm-6 col-xs-12">
+                        <select id="ContentSection" asp-for="ContentSection" placeholder="" class="form-control" required data-error="Please select Confirm Section">
+                            <option value="">-- Select --</option>
+                            <option>About Staffing</option>
+                            <option>About Recruitment</option>
+                            <option>others</option>
+                        </select>
+                        <span asp-validation-for="ContentSection" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ConfirmEmail" class="control-label col-md-2 required">Message</label>
+                    <div class="col-sm-6 col-xs-12">
+                        <textarea class="form-control" placeholder="Write your message" name="Message" rows="11" data-error="Write your message" required></textarea>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-sm-offset-2 col-sm-6 col-xs-12">
+                        <label class="control-label">個人情報の取り扱い規約</label>
+                        <textarea class="form-control" placeholder="Massage" rows="11" readonly>
+事業者の氏名または名称
+All Jobs Japan Co., Ltd.
+
+個人情報保護管理者
+
+Naosuke Sugihara
+
+個人情報の利用目的
+
+お問合せいただいた内容に回答するため
+
+個人情報の第三者提供
+
+取得した個人情報は法令等による場合を除いて第三者に提供することはありません。
+
+個人情報の取扱いの委託
+
+取得した個人情報の取扱いの全部又は、一部を委託することがあります。
+
+個人情報を与えなかった場合に生じる結果
+
+個人情報を与えることは任意です。個人情報に関する情報の一部をご提供いただけない場合は、お問い合わせ内容に回答できない可能性があります。
+
+開示対象個人情報の開示等および問合せ窓口
+
+ご本人からの求めにより、当社が保有する開示対象個人情報の利用目的の通知・開示・内容の訂正・追加または削除・利用の停止・消去および第三者への提供の停止（「開示等」といいます）に応じます。開示等に応ずる窓口は、お問合せいただきました当該部署になります。
+
+本人が容易に認識できない方法による個人情報の取得
+
+クッキーやウェブビーコン等を用いるなどして、本人が容易に認識できない方法による個人情報の取得は行っておりません。
+
+個人情報の安全管理措置
+
+取得した個人情報については、漏洩、減失またはき損の防止と是正、その他個人情報の安全管理のために必要かつ適切な措置を講じます。お問合せへの回答後、取得した個人情報は当社内において削除致します。
+
+個人情報保護方針
+
+当社ホームページの個人情報保護方針をご覧下さい。
+</textarea>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            <input id="inputIRequest" name="InformationRequest" type="checkbox">
+                            I agree to the Terms and Conditions
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <button type="submit" id="btnSendUs" class="btn btn-common">Send Us</button>
+                        <div id="msgSubmit" class="h3 text-center hidden"></div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+
+        $('#btnSendUs').click(function () {
+            var isChecked = $('#inputIRequest').prop('checked');
+            if (isChecked == false) {
+                alert("Please click on checkbox to agree Term and Condition");
+                return false;
+            }
+            //comparePassword($('#EmailAddress'), $('#ConfirmEmail'))
+            //comparePassword();
+        });
+
+        var password = document.getElementById("EmailAddress")
+        var confirm_password = document.getElementById("ConfirmEmail");
+
+        function validatePassword() {
+
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+        confirm_password.addEventListener('change', function () {
+            validatePassword();
+
+        });
+    </script>
+
+}
+<!-- End Contact Us Section  -->

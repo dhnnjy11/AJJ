@@ -1,0 +1,51 @@
+﻿@using Ajj.Areas.Clients.Models
+@model List<CandidateViewModel>
+@{
+    ViewData["Title"] = "CandidatesAsync";
+    Layout = "~/Areas/Clients/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="medium-title">Candidates</h2>
+@foreach (var item in Model)
+{
+<div class="box">
+    <div class="row">
+        <div class="col-md-6"><h4>@item.Name</h4></div>
+        <br />
+        <br />
+    </div>
+    <div class="row">
+
+        <div class="col-sm-2">
+            連絡用Email
+        </div>
+        <div class="col-sm-6">
+            <label style="color:blue">@item.EmailAddress</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <strong>
+                住所
+            </strong>
+        </div>
+        <div class="col-sm-6">
+            <label style="color:blue">@item.Address</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <strong>
+                申し込み日
+            </strong>
+        </div>
+        <div class="col-sm-6">
+            <label style="color:blue">@item.AppliedDate.ToString("yyyy/MM/dd")</label>
+        </div>
+    </div>
+</div>
+
+}
+
+<div>
+</div>

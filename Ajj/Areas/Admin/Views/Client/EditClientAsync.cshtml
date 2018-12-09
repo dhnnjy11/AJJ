@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Edit Client";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="medium-title">@ViewData["Title"]</h2>
+
+@await Html.PartialAsync("_AlertPartial")
+<div class="row">
+    <div class="col-md-9">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <form id="registerform" role="form" method="post" enctype="multipart/form-data" asp-area="Admin" asp-controller="Client" asp-action="Edit" asp-route-returnurl="@ViewData["ReturnUrl"]">
+
+            @await Html.PartialAsync("_ClientForm")
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <button id="editClient" type="submit" class="btn btn-primary btn-block">Edit Client</button>
+                    </div>
+                </div>
+
+            </div>
+        </form> <!-- /form -->
+    </div>
+</div>
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        Helper.AutoFillByPostal();
+    </script>
+}

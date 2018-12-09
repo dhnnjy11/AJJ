@@ -1,0 +1,68 @@
+﻿@using Ajj.Areas.Admin.Models
+
+@model Client
+
+@{
+    ViewData["Title"] = "Client Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="medium-title">@Model.CompanyName</h2>
+<br />
+<div class="row">
+
+    <div class="col-md-8 col-sm-12 col-xs-12">
+        <div class="content-area">
+            <div class="clearfix">
+                <div class="box" style="min-height:250px">
+                    <h4>Company Description</h4>
+                    <br />
+                    <p>@Model.AboutCompany</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-12 col-xs-12">
+        <aside>
+            <div class="sidebar">
+                <div class="box" style="min-height:600px">
+                    <h2 class="small-title">Company Details</h2>
+                    <ul class="detail-list">
+                        <li>
+                            <a href="#">Company Id</a>
+                            <span class="type-posts">@Model.Id</span>
+                        </li>
+                        <li>
+                            <a href="#">Website</a>
+                            <span class="type-posts"><a href="@Model.WebsiteUrl">@Model.WebsiteUrl</a></span>
+                        </li>
+                        <li>
+                            <a href="#">Contact Person</a>
+                            <span class="type-posts">@Model.ContactPerson</span>
+                        </li>
+                        <li>
+                            <a href="#">Contact Email</a>
+                            <span class="type-posts">@Model.ContactEmail</span>
+                        </li>
+                        <li>
+                            <a href="#">Contact Number</a>
+                            <span class="type-posts">@Model.ContactNumber</span>
+                        </li>
+                        <li>
+                            <a href="#">Address</a>
+                            <span class="type-posts">@Model.Address</span>
+                        </li>
+
+                        @*<li>
+                            <a href="#">Industry</a>
+                            @if (@Model.businessstream != null)
+                            {
+                                <span class="type-posts">@Model.businessstream.Name</span>
+                            }
+                        </li>*@
+                    </ul>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>

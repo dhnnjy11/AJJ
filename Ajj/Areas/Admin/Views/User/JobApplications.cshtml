@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "Job Applications";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="medium-title">Job Applications</h2>
+<table id="jobstable" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Apply Date</th>
+            <th>Job Id</th>
+            <th>User Email</th>
+            <th>Job Title </th>
+            <th>Company Name</th>
+           
+        </tr>
+    </thead>
+   
+</table>
+@section Scripts {
+    <script>
+
+        var clienttable = $('#jobstable').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                "url": "@Url.Action("GetApplications", "User", new { Area = "admin" })",
+                "type": "POST",
+                "datatype": 'json'
+            },
+            "columns": [
+                { "data": "applyDate", orderable: true },
+                { "data": "jobId" },
+                { "data": "applicantEmail" },
+                { "data": "jobTitle" },
+                { "data": "companyName" }
+            ]
+        });
+
+        $('#inputfile').on('change', function () {
+            $('.file-upload-input + label > span').text(this.files[0].name);
+        });
+    </script>
+}
+

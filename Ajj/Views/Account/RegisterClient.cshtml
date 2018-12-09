@@ -1,0 +1,200 @@
+﻿@model RegisterClientViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RegisterClient</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css" type="text/css">
+    <!-- Responsive CSS Styles -->
+    <link rel="stylesheet" href="~/assets/css/responsive.css" type="text/css">
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="~/assets/css/main.css" type="text/css">
+    <style>
+    </style>
+</head>
+<body id="registerform">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                
+                <form id="registerform" role="form" method="post" asp-controller="Account" asp-action="RegisterClient" enctype="multipart/form-data" asp-route-returnurl="@ViewData["ReturnUrl"]">
+                    <br />
+                    <h2 class="medium-title">登録</h2>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="FirstName" class="control-label required">名前（名)</label>
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                                <input type="text" asp-for="FirstName" placeholder="" class="form-control" required data-error="Please enter contact person name" autofocus>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="LastName" class="control-label required">苗字（姓)</label>
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                                <input type="text" asp-for="LastName" placeholder="" class="form-control" required data-error="Please enter contact person name" autofocus>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="CompanyEmail" class="control-label required">連絡用Email</label>
+                                <span asp-validation-for="CompanyEmail" class="text-danger"></span>
+                                <input type="text" placeholder="例) recruiter1@xxx.com" asp-for="CompanyEmail" class="form-control" required data-error="Please enter your email" autofocus>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="PhoneNumber" class="control-label required">電話番号(応募向け)</label>
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                <input type="tel" id="Phone" placeholder="例) 09999999999" asp-for="PhoneNumber" class="form-control" data-error="Phone number show be 10 to 15 digits" autofocus pattern="^[0-9]{10,15}$" title="Phone number must be 10 to 15 digit long!" required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Password" class="control-label required">パスワード</label>@*<span style="color:red;">(Please enter atleast 8 characters)</span>*@
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                                <input type="password" asp-for="Password" placeholder="" class="form-control" required data-error="Please enter atleast 8 characters" pattern="^.{8,20}$" autofocus />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="ConfirmPassword" class="control-label required">パスワード確認</label>
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                <input type="password" id="ConfirmPassword" asp-for="ConfirmPassword" placeholder="" class="form-control" required data-error="Please enter atleast 8 characters" pattern="^.{8,20}$" autofocus />
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <label style="font-size:18px;margin-bottom:10px;">会社情報登</label>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="CompanyName" class="control-label required">企業名</label>
+                                <span asp-validation-for="CompanyName" class="text-danger"></span>
+                                <input type="text" placeholder="例) All Jobs Japan" asp-for="CompanyName" class="form-control" required autofocus>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="WebsiteUrl" class="control-label required">企業URL</label>
+                                <span asp-validation-for="WebsiteUrl" class="text-danger"></span>
+                                <input type="text" placeholder="例) www.jobsjapan.net" asp-for="WebsiteUrl" class="form-control" required data-error="Please enter company Domain" autofocus>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <span asp-validation-for="CityName" class="text-danger"></span>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="PostalAddrss1" class="control-label required">郵便番号</label>
+                                <div class="row">
+
+                                    <div class="col-sm-4" style="padding-right:0px">
+                                        <input type="text" id="postalAddress1" placeholder="" class="form-control" asp-for="PostalAddrss1" maxlength="3" data-error="Please enter three digits" autofocus pattern="^[0-9]{3}$" required>
+                                    </div><div class="col-sm-1"><h2>-</h2></div>
+                                    <div class="col-sm-6">
+                                        <input type="text" id="postalAddress2" placeholder="" class="form-control" asp-for="PostalAddrss2" maxlength="4" data-error="Please enter four digits" autofocus pattern="^[0-9]{4}$" required>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div id="injapanProvince">
+                                    <label for="province" class="control-label required">都道府県</label>
+                                    <select class="form-control" asp-for="ProvinceID" asp-items="Model.Provinces" required data-error="Please select province" autofocus>
+                                        <option value="0">-- 選択 --</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="city" class="control-label required">市区町村</label>
+                                <input type="text" asp-for="CityName" placeholder="" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="city" class="control-label required">町名以下</label>
+                                <input type="text" asp-for="Town" placeholder="" class="form-control" required>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+
+                                <label for="address" class="control-label required">住所</label>
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                                <input type="text" id="address" placeholder="" class="form-control" asp-for="Address" required data-error="please enter address">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="inputfile" class="control-label">
+                                    画像添付（仕事風景など）
+                                </label>
+                                <input id="inputfile" class="form-control" type="file" asp-for="Files" accept=".png,.jpeg,.jpg" />
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <button id="register" type="submit" class="btn btn-primary btn-block">登録</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form> <!-- /form -->
+            </div>
+        </div><br /><br />
+    </div>
+    <script src="~/assets/js/jquery-min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/assets/js/helper.js"></script>
+    <script>
+        
+        $('#CityName').prop('readonly', true);
+        $('#ProvinceID').prop('readonly', true);
+        $('#Town').prop('readonly', true);
+        Helper.AutoFillByPostal();
+        $('#UserName').focusout(function () {
+            Helper.VerifyUserName($(this));
+        })
+    </script>
+</body>
+</html>

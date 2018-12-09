@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewData["Title"] = "Registered Client";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="medium-title">Registered Client</h2>
+<br />
+<table id="clientstable" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Company Name</th>
+            <th>Website </th>
+            <th>Contact Person</th>
+            <th>Contact Email</th>
+            <th>Address</th>
+            @*<th></th>
+        <th></th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td></td>
+            <td>@item.Id</td>
+            <td>@item.CompanyName</td>
+            <td>@item.WebsiteUrl</td>
+            <td>@item.ContactPerson</td>
+            <td>@item.ContactEmail</td>
+            <td>@item.Address</td>
+            @*<td>
+            <a asp-area="Admin" asp-controller="Client" asp-action="Edit/@item.Id">Edit</a>
+        </td>
+        <td>
+            <form id="deleteclient" method="post" asp-area="Admin" asp-controller="Client" asp-action="Delete/@item.Id">
+                <a href="#" onclick="document.getElementById('deleteclient').submit()">Delete</a>
+            </form>
+        </td>*@
+            <td>
+                <a asp-area="Admin" asp-controller="Client" asp-action="Detail" asp-route-id="@item.Id">Details</a>
+            </td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+@section Scripts {
+    <script>
+        $('#clientstable').DataTable({
+            responsive: true,
+            columnDefs: [{
+                orderable: false,
+                className: 'select-checkbox',
+                targets: 0
+            },
+            ],
+            select: {
+                style: 'multi',
+                selector: 'td:first-child'
+            },
+            order: [[1, 'asc']]
+        });
+    </script>
+}
+<br />

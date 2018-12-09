@@ -1,0 +1,30 @@
+@using Microsoft.AspNetCore.Identity
+@using Ajj.Models
+
+@inject SignInManager<ApplicationUser> signInManager
+@inject UserManager<ApplicationUser> userManager
+
+@if (signInManager.IsSignedIn(User) && @User.IsInRole("admin"))
+{
+    <form asp-area="" asp-controller="Account" asp-action="Logout" asp-route-role="admin" method="post" id="logoutForm" class="navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="left">
+                <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @userManager.GetUserName(User)!</a>
+            </li>
+            <li class="right">
+                @*<button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>*@
+                <a href="#" onclick="document.getElementById('logoutForm').submit();">Log Out</a>
+            </li>
+        </ul>
+    </form>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right float-right">
+        <li class="right">
+            <a href="~/Account/Login">
+                <i class="ti-lock"></i>  Log In
+            </a>
+        </li>
+    </ul>
+}

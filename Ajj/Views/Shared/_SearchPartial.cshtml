@@ -1,0 +1,43 @@
+﻿<form method="get" asp-controller="Job" asp-action="SearchJobsAsync" asp-route-provinceName="@TempData["province"]" asp-route-searchString="@TempData["searchstring"]" asp-route-jobCategory="@TempData["jobcategory"]">
+    <div class="row">
+        <div class="search-block clearfix">
+            <div class="col-md-3 col-sm-12">
+                <div class="form-group">
+                    <input id="searchString" name="searchString" value="@TempData["searchstring"]" class="form-control search-input" type="text" placeholder="JobTitle / Company / City">
+                    <i class="ti-time"></i>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="ui-widget search-category-container">
+                    <label class="styled-select">
+                        <select name="jobCategory" class="dropdown-product selectpicker search-input">
+                            <option value="">--Choose Category--</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="ui-widget search-category-container">
+                    <label class="styled-select">
+                        <select name="ProvinceName" asp-for="@TempData["province"]" class="dropdown-product selectpicker search-input">
+                            <option value="">--Choose Location--</option>
+                            <option value="tokyo">Tokyo</option>
+                            <option value="chiba">Chiba</option>
+                            <option value="gunma">Gunma</option>
+                            <option value="ibaraki">Ibaraki</option>
+                            <option value="kanagawa">Kanagawa</option>
+                            <option value="saitama">Saitama</option>
+                            <option value="tochigi">Tochigi</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-1 col-sm-6">
+                <button type="submit" class="btn btn-search-icon">
+                    <i class="ti-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</form>

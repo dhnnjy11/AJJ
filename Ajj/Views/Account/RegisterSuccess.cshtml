@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Register Success";
+}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="announcment">
+                    <div class="announcment__head">Important notice for user</div>
+                    <p class="announcment__text">Thank you for registration for All Jobs Japan(AJJ).  After you verified your account of AJJ clicking URL on your email, you can login to <a class="announcment__link" href="http://gaijinbank.com" target="_blank"> GaijinBank </a>with same email address(ID) and Password.</p>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <h2>Registration has been completed successfully</h2>
+
+            <p>Login to Email and click on confirmation link for verification</p>
+            <br />
+            <br />
+            <h2>登録まであと一歩です。</h2>
+
+            <p>登録したEmail addressへメールを送付しました。URLをクリックし、認証終了後登録完了となります。その後ログイン可能になります。</p>
+        </div>
+    </div>
+</section>
+
+
+@section scripts{
+    <script>
+
+        window.onload = function () {
+            var reloading = sessionStorage.getItem("reloading");
+            if (reloading == null) {
+                sessionStorage.setItem("reloading", "true");
+            }
+            else {
+                window.location.href = 'http://www.jobsjapan.net/';
+            }
+
+        }
+    </script>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '128822601225981');
+        fbq('track', 'PageView');</script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=128822601225981&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+}

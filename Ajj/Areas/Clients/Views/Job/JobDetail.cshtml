@@ -1,0 +1,101 @@
+﻿@using Ajj.Areas.Clients.Models;
+@model ClientJobViewModel;
+
+@{
+    ViewData["Title"] = "JobDetail";
+    Layout = "~/Areas/Clients/Views/Shared/_Layout.cshtml";
+}
+<section class="normal-form">
+    <h2 class="medium-title">
+        Job Details
+    </h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-0 col-md-6">
+                <aside>
+                    <div class="sidebar">
+                        <div class="box-simple">
+                            <h3 class="small-title">
+                                @Model.JobTitle
+                            </h3>
+                            <ul class="detail-list">
+                                <li>
+                                    <span class="small-heading">Job Id</span>
+                                    <span class="type-posts margin-right-medium">@Model.JobId</span>
+                                </li>
+                                <li>
+                                    <span class="small-heading">時給</span>
+                                    <span class="type-posts margin-right-medium">@Model.Salary_Hourly</span><strong>(円以上)</strong> 
+                                </li>
+                                <li>
+                                    <span class="small-heading">勤務時間/日</span>
+                                    <span class="type-posts margin-right-medium">@Model.Workinghour</span>
+                                </li>
+                                <li>
+                                    <span class="small-heading">必要な日本語レベル</span>
+                                    <span class="type-posts margin-right-medium">@Model.JapaneseLevel</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+            <div class="col-md-offset-0 col-md-6">
+                <aside>
+                    <div class="sidebar">
+                        <div class="box-simple">
+                            <h2 class="small-title">
+                               &nbsp;
+                            </h2>
+                            <ul class="detail-list">
+                                <li>
+                                    <span class="small-heading">契約</span>
+                                    <span class="type-posts margin-right-medium">@Model.ContractType</span>
+                                </li>
+                                <li>
+                                    <span class="small-heading">月給</span>
+                                    <span class="type-posts margin-right-medium">@Model.Salary_Monthly</span> <strong>(円以上)</strong>
+                                </li>
+                                <li>
+                                    <span class="small-heading">必要なスタッフ数</span>
+                                    <span class="type-posts margin-right-medium">@Model.NeededStaff</span>
+                                </li>
+
+                                <li>
+                                    <span class="small-heading">勤務日数/週</span>
+                                    <span class="type-posts margin-right-medium">@Model.WorkingDaysPerWeek</span>
+                                </li>
+                                <li>
+                                    <span class="small-heading">交通費</span>
+                                    @if (Model.JapaneseLevel == "Y")
+                                    {
+                                        <span class="type-posts margin-right-medium">Yes</span>
+
+                                    }
+                                    else
+                                    {
+                                        <span class="type-posts margin-right-medium">No</span>
+
+                                    }
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @if (User.IsInRole("admin"))
+                {
+                    <a class="btn btn-primary" asp-area="admin" asp-controller="JobInfo" asp-action="IndexAsync">戻る</a>
+                }
+                else if (User.IsInRole("client"))
+                {
+                    <a class="btn btn-primary" asp-area="clients" asp-controller="Job" asp-action="IndexAsync">戻る</a>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

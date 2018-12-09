@@ -1,0 +1,128 @@
+﻿@using Ajj.Areas.Admin.Models
+@model AddClientViewModel
+<!--Alternate way to show validation-->
+<!--data-toggle="validator"-->
+
+<input type="hidden" asp-for="Id" />
+<label>Contact Person</label>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="ContactPerson" class="control-label required">Last Name</label>
+            <input type="text" asp-for="LastName" placeholder="" class="form-control" required data-error="Please enter contact person name" autofocus>
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="ContactPerson" class="control-label required">First Name</label>
+            <input type="text" asp-for="FirstName" placeholder="" class="form-control" required data-error="Please enter contact person name" autofocus>
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="companyname" class="control-label required">Company Name</label>
+            <input type="text" id="first_name" placeholder="All Jobs Japan" asp-for="CompanyName" class="form-control" required data-error="Please enter company name" autofocus>
+            <span asp-validation-for="CompanyName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <label for="companyname" class="control-label">Company Website</label>
+        <div class="form-group">
+            <input type="text" placeholder="www.jobsjapan.net" asp-for="WebsiteUrl" class="form-control" data-error="Please enter company Domain" autofocus>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="ContactEmail" class="control-label required">Contact Email</label>
+            <input type="text" asp-for="ContactEmail" placeholder="xyz@gmail.com" class="form-control" required data-error="Please enter contact person email" autofocus>
+            <span asp-validation-for="ContactEmail" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="PhoneNumber" class="control-label required">Phone</label>
+            <input type="tel" id="Phone" placeholder="07099999999" asp-for="ContactNumber" class="form-control" data-error="Phone number show be 10 to 15 digits" autofocus pattern="^[0-9]{10,15}$" title="Phone number must be 10 to 15 digit long!" required>
+        </div>
+    </div>
+</div>
+
+<p id="postalnotfound" class="alert alert-danger" style="display:none">Postal Code not found</p>
+<span asp-validation-for="CityName" class="text-danger"></span>
+<div class="row">
+    <div class="col-sm-3">
+
+        <div class="form-group">
+            <label for="postalAddress" class="control-label required">Postal Address</label>
+            <div class="row">
+                <div class="col-sm-4" style="padding-right:0px">
+                    <input type="text" id="postalAddress1" placeholder="" class="form-control" name="PostalAddrss1" asp-for="PostalAddrss1" maxlength="3" data-error="Please enter three digits" autofocus pattern="^[0-9]{3}$" required>
+                </div><div class="col-sm-1"><h2>-</h2></div>
+                <div class="col-sm-6">
+                    <input type="text" id="postalAddress2" placeholder="" class="form-control" name="PostalAddrss2" asp-for="PostalAddrss2" maxlength="4" data-error="Please enter four digits" autofocus pattern="^[0-9]{4}$" required>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+            <div id="injapanProvince">
+                <label for="province" class="control-label required">Province</label>
+                <select class="form-control" asp-for="ProvinceID" asp-items="Model.Provinces" data-error="Please select province" autofocus readonly>
+                    <option value="">--Options--</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+            <label for="city" class="control-label required">City</label>
+            <input type="text" asp-for="CityName" placeholder="" class="form-control" required name="CityName" readonly>
+
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+            <label for="city" class="control-label required">Town</label>
+            <input type="text" asp-for="Town" placeholder="" class="form-control" name="Town" required readonly>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+
+            <label for="address" class="control-label required">Address</label>
+            <input type="text" id="address" placeholder="" class="form-control" asp-for="Address" required data-error="please enter address">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label for="inputfile" class="control-label">
+                画像添付（仕事風景など）
+            </label>
+            <input id="inputfile" class="form-control" type="file" asp-for="Files" accept=".png,.jpeg,.jpg" />
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+
+            <label for="address" class="control-label">Comment</label>
+            <textarea type="text" id="address" placeholder="Write something about company" rows="10" class="form-control" asp-for="AboutCompany"></textarea>
+            <span asp-validation-for="AboutCompany" class="text-danger"></span>
+        </div>
+    </div>
+</div>

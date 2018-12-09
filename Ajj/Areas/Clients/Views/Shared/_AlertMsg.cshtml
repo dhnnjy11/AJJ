@@ -1,0 +1,19 @@
+﻿<!--it is not using anywhere -->
+@if (ViewData["message"] != null)
+{
+    <div class="row">
+        <br />
+        <div class="col-md-5">
+            <p class="alert alert-info">@ViewData["message"]</p>
+        </div>
+    </div>
+}
+@if (ViewData["error"] != null)
+{
+    <div class="row">
+        <br />
+        <div class="col-md-5">
+            <p class="alert alert-danger">@ViewData["error"]</p>
+        </div>
+    </div>
+}

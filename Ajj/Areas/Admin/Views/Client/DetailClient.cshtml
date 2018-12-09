@@ -1,0 +1,121 @@
+﻿@using Ajj.Areas.Admin.Models
+
+@model Client
+
+@{
+    ViewData["Title"] = "Client Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="medium-title">@Model.CompanyName</h2>
+<br />
+<div class="row">
+
+    <div class="col-md-7 col-sm-12 col-xs-12">
+        <div class="content-area">
+            <div class="clearfix">
+                <div class="col-md-12">
+                    <div class="add-comment">
+                        <div class="add-comment--header">
+                            
+                            <br />
+                            <span>
+                                <a id="comment-edit" class="btn btn-info btn-sm" href="#">Write Comment</a>
+                                <a id="comment-save" style="display:none" class="btn btn-common btn-sm" href="#">Save</a>
+                                <a id="comment-cancel" style="display:none" class="btn btn-default btn-sm" href="#">Cancel</a>
+                            </span>
+                        </div>
+
+                    </div>
+                    
+                    <textarea id="comment-box" style="display:none" rows="20" class="form-control" placeholder="Add your comment here">@Model.AboutCompany</textarea>
+                    <label id="comment-label">@Model.AboutCompany</label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-5 col-sm-12 col-xs-12">
+        <aside>
+            <div class="sidebar">
+                <div class="box" style="min-height:600px">
+                    <h2 class="small-title">Company Details</h2>
+                    <ul class="detail-list">
+                        <li>
+                            <b>Company Id</b>
+                            <span class="type-posts">@Model.Id</span>
+                        </li>
+                        <li>
+                            <b>Website</b>
+                            <span class="type-posts"><a href="@Model.WebsiteUrl">@Model.WebsiteUrl</a></span>
+                        </li>
+                        <li>
+                            <b>Contact Person</b>
+                            <span class="type-posts">@Model.ContactPerson</span>
+                        </li>
+                        <li>
+                            <b>Contact Email</b>
+                            <span class="type-posts">@Model.ContactEmail</span>
+                        </li>
+                        <li>
+                            <b>Contact Number</b>
+                            <span class="type-posts">@Model.ContactNumber</span>
+                        </li>
+                        <li>
+                            <b href="#">Address</b>
+                            <span class="type-posts">@Model.Address</span>
+                        </li>
+
+
+                        @*<li>
+                                <a href="#">Industry</a>
+                                @if (@Model.businessstream != null)
+                                {
+                                    <span class="type-posts">@Model.businessstream.Name</span>
+                                }
+                            </li>*@
+                    </ul>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $('#comment-edit').on('click', function () {
+            $('#comment-box').show();
+            $('#comment-label').hide();
+            $('#comment-save').show();
+            $('#comment-cancel').show();
+            $('#comment-edit').hide();
+            
+        });
+
+        $('#comment-cancel').on('click', function () {
+            
+            var previousVal = $('#comment-label').text();
+            $('#comment-box').val(previousVal);
+            $('#comment-box').hide();
+            $('#comment-label').show();
+            $('#comment-save').hide();
+            $('#comment-cancel').hide();
+            $('#comment-edit').show();
+
+        });
+
+        $('#comment-save').on('click', function () {
+            var url = "@Url.Action("AddComment","Client", new { area = "admin"})";
+            var data = { comment: $('#comment-box').val(), clientId:@Model.Id };
+            Helper.PostAjaxRequest(url,data)
+            $('#comment-box').hide();
+            var boxvalue = $('#comment-box').val();
+            $('#comment-label').show();
+            $('#comment-label').text(boxvalue)
+          
+            $('#comment-save').hide();
+            $('#comment-cancel').hide();
+            $('#comment-edit').show();
+            });
+    </script>
+}

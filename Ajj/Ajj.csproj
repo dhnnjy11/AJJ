@@ -1,0 +1,223 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>aspnet-Ajj-7F97E9C2-6759-430E-9588-81A91294771A</UserSecretsId>
+    <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+  <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Admin\Views\Admin\**" />
+    <Compile Remove="Areas\Clients\Data\**" />
+    <Compile Remove="Areas\Clients\Views\Clients\**" />
+    <Compile Remove="Data\**" />
+    <Compile Remove="JobData\**" />
+    <Compile Remove="Repository\**" />
+    <Compile Remove="wwwroot\css\**" />
+    <Compile Remove="wwwroot\images\**" />
+    <Compile Remove="wwwroot\js\**" />
+    <Content Remove="Areas\Admin\Views\Admin\**" />
+    <Content Remove="Areas\Clients\Data\**" />
+    <Content Remove="Areas\Clients\Views\Clients\**" />
+    <Content Remove="Data\**" />
+    <Content Remove="JobData\**" />
+    <Content Remove="Repository\**" />
+    <Content Remove="wwwroot\css\**" />
+    <Content Remove="wwwroot\images\**" />
+    <Content Remove="wwwroot\js\**" />
+    <EmbeddedResource Remove="Areas\Admin\Views\Admin\**" />
+    <EmbeddedResource Remove="Areas\Clients\Data\**" />
+    <EmbeddedResource Remove="Areas\Clients\Views\Clients\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="JobData\**" />
+    <EmbeddedResource Remove="Repository\**" />
+    <EmbeddedResource Remove="wwwroot\css\**" />
+    <EmbeddedResource Remove="wwwroot\images\**" />
+    <EmbeddedResource Remove="wwwroot\js\**" />
+    <None Remove="Areas\Admin\Views\Admin\**" />
+    <None Remove="Areas\Clients\Data\**" />
+    <None Remove="Areas\Clients\Views\Clients\**" />
+    <None Remove="Data\**" />
+    <None Remove="JobData\**" />
+    <None Remove="Repository\**" />
+    <None Remove="wwwroot\css\**" />
+    <None Remove="wwwroot\images\**" />
+    <None Remove="wwwroot\js\**" />
+  </ItemGroup>
+  
+
+  <ItemGroup>
+    <Compile Remove="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Remove="Areas\Admin\Models\ClientViewModel\ClientListViewModel.cs" />
+    <Compile Remove="Areas\Clients\Models\ClientRegisterViewModel.cs" />
+    <Compile Remove="Controllers\TestController.cs" />
+    <Compile Remove="Migrations\20181012080643_TwentyEight.cs" />
+    <Compile Remove="Migrations\20181012080643_TwentyEight.Designer.cs" />
+    <Compile Remove="Migrations\20181012081355_TwentyEight.cs" />
+    <Compile Remove="Migrations\20181012081355_TwentyEight.Designer.cs" />
+    <Compile Remove="Migrations\20181012084058_TwentyEight.cs" />
+    <Compile Remove="Migrations\20181012084058_TwentyEight.Designer.cs" />
+    <Compile Remove="Migrations\20181012084956_twentyeight.cs" />
+    <Compile Remove="Migrations\20181012084956_twentyeight.Designer.cs" />
+    <Compile Remove="Migrations\20181012085403_twentyeight.cs" />
+    <Compile Remove="Migrations\20181012085403_twentyeight.Designer.cs" />
+    <Compile Remove="Migrations\20181012085717_twentyeight.cs" />
+    <Compile Remove="Migrations\20181012085717_twentyeight.Designer.cs" />
+    <Compile Remove="Migrations\20181013104405_twentyeight.cs" />
+    <Compile Remove="Migrations\20181013104405_twentyeight.Designer.cs" />
+    <Compile Remove="Migrations\20181013105048_twentyeight.cs" />
+    <Compile Remove="Migrations\20181013105048_twentyeight.Designer.cs" />
+    <Compile Remove="Migrations\20181013105555_twentyeight.cs" />
+    <Compile Remove="Migrations\20181013105555_twentyeight.Designer.cs" />
+    <Compile Remove="Migrations\20181013135027_twentyeight.cs" />
+    <Compile Remove="Migrations\20181013135027_twentyeight.Designer.cs" />
+    <Compile Remove="Migrations\20181013140022_twentyeight.cs" />
+    <Compile Remove="Migrations\20181013140022_twentyeight.Designer.cs" />
+    <Compile Remove="Migrations\20181013140610_twentyeight.cs" />
+    <Compile Remove="Migrations\20181013140610_twentyeight.Designer.cs" />
+    <Compile Remove="Migrations\20181024062429_thirtytwo.cs" />
+    <Compile Remove="Migrations\20181024062429_thirtytwo.Designer.cs" />
+    <Compile Remove="Migrations\20181024084357_thirtythree.cs" />
+    <Compile Remove="Migrations\20181024084357_thirtythree.Designer.cs" />
+    <Compile Remove="Migrations\20181101083050_fixbug.cs" />
+    <Compile Remove="Migrations\20181101083050_fixbug.Designer.cs" />
+    <Compile Remove="Migrations\20181101083204_fixbug.cs" />
+    <Compile Remove="Migrations\20181101083204_fixbug.Designer.cs" />
+    <Compile Remove="Migrations\20181102030704_38.cs" />
+    <Compile Remove="Migrations\20181102030704_38.Designer.cs" />
+    <Compile Remove="Migrations\20181126064240_43.cs" />
+    <Compile Remove="Migrations\20181126074456_46.cs" />
+    <Compile Remove="Migrations\20181126074725_46.cs" />
+    <Compile Remove="Migrations\20181126075112_46.cs" />
+    <Compile Remove="Migrations\20181126075207_46.cs" />
+    <Compile Remove="Migrations\20181126075343_46.cs" />
+    <Compile Remove="Migrations\20181126080616_46.cs" />
+    <Compile Remove="Migrations\20181126081416_46.cs" />
+    <Compile Remove="Migrations\20181126081633_46.cs" />
+    <Compile Remove="Migrations\20181126081753_46.cs" />
+    <Compile Remove="Migrations\20181126082042_46.cs" />
+    <Compile Remove="Migrations\20181126082517_46.cs" />
+    <Compile Remove="Migrations\20181126083947_46.cs" />
+    <Compile Remove="Migrations\20181127005214_47.cs" />
+    <Compile Remove="Migrations\20181127045714_47.cs" />
+    <Compile Remove="Migrations\20181127045909_47.cs" />
+    <Compile Remove="Service\AutoFillService.cs" />
+    <Compile Remove="ViewModels\ApplicationUser.cs" />
+    <Compile Remove="ViewModels\BusinessStream.cs" />
+    <Compile Remove="ViewModels\Client.cs" />
+    <Compile Remove="ViewModels\CompanyImage.cs" />
+    <Compile Remove="ViewModels\ContractType.cs" />
+    <Compile Remove="ViewModels\Country.cs" />
+    <Compile Remove="ViewModels\CustomDatatable.cs" />
+    <Compile Remove="ViewModels\ErrorViewModel.cs" />
+    <Compile Remove="ViewModels\InternalUser.cs" />
+    <Compile Remove="ViewModels\JapaneseLevel.cs" />
+    <Compile Remove="ViewModels\Job.cs" />
+    <Compile Remove="ViewModels\JobApply.cs" />
+    <Compile Remove="ViewModels\JobCategory.cs" />
+    <Compile Remove="ViewModels\JobSeeker.cs" />
+    <Compile Remove="ViewModels\PostalCode.cs" />
+    <Compile Remove="ViewModels\Province.cs" />
+    <Compile Remove="Services\AuthMessageSenderOptions.cs" />
+    <Compile Remove="Services\EmailSender.cs" />
+    <Compile Remove="Services\EmailSender_bak.cs" />
+    <Compile Remove="Services\IEmailSender_bak.cs" />
+    <Compile Remove="Services\MD5PasswordHasher.cs" />
+  </ItemGroup>
+  
+
+  <ItemGroup>
+    <Content Remove="Views\Home\TestUploadAsync.cshtml" />
+    <Content Remove="Views\Shared\_MainMenu.cshtml" />
+  </ItemGroup>
+  
+
+  <ItemGroup>
+    <None Remove="Formats\emails.xml" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="4.5.2.1" />
+    <PackageReference Include="MailKit" Version="2.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" PrivateAssets="All" />
+    <PackageReference Include="ServiceStack.HttpClient" Version="5.4.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.8.18" />
+    <PackageReference Include="TagHelperSamples.Bootstrap" Version="2.0.30" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.2" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.1" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ajj.Core\Ajj.Core.csproj" />
+    <ProjectReference Include="..\Ajj.Infrastructure\Ajj.Infrastructure.csproj" />
+    <ProjectReference Include="..\ReflectionIT.Mvc.Paging\ReflectionIT.Mvc.Paging.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Service\" />
+    <Folder Include="wwwroot\assets\img\companies\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\css\DataTables-1.10.18\js\dataTables.bootstrap.js" />
+    <None Include="wwwroot\assets\css\DataTables-1.10.18\js\dataTables.bootstrap.min.js" />
+    <None Include="wwwroot\assets\css\DataTables-1.10.18\js\dataTables.bootstrap4.js" />
+    <None Include="wwwroot\assets\css\DataTables-1.10.18\js\dataTables.bootstrap4.min.js" />
+    <None Include="wwwroot\assets\css\DataTables-1.10.18\js\dataTables.foundation.js" />
+    <None Include="wwwroot\assets\css\DataTables-1.10.18\js\dataTables.foundation.min.js" />
+    <None Include="wwwroot\assets\css\DataTables-1.10.18\js\dataTables.jqueryui.js" />
+    <None Include="wwwroot\assets\css\DataTables-1.10.18\js\dataTables.jqueryui.min.js" />
+    <None Include="wwwroot\assets\css\DataTables-1.10.18\js\dataTables.semanticui.js" />
+    <None Include="wwwroot\assets\css\DataTables-1.10.18\js\dataTables.semanticui.min.js" />
+    <None Include="wwwroot\assets\css\DataTables-1.10.18\js\jquery.dataTables.js" />
+    <None Include="wwwroot\assets\css\DataTables-1.10.18\js\jquery.dataTables.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\npm.js" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery.dataTables.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\Admin\Views\Client\Index.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Admin\Views\Shared\_ValidationScriptsPartial.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Clients\Views\Shared\_JobForm_En.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Account\SetPasswordAsync.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Account\SetPasswordConfirmation.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+</Project>

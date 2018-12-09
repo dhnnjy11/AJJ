@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "PotentialClients";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="medium-title">All Client List</h2>
+<br />
+@await Html.PartialAsync("_ClientList");
+@section Scripts {
+    <script>
+        $('#clientstable').DataTable({
+            responsive: true
+        });
+    </script>
+}
+<br />
+<br />

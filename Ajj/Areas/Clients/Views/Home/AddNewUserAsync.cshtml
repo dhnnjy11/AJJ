@@ -1,0 +1,110 @@
+﻿@using Ajj.Areas.Clients.Models
+@model NewUserViewModel
+@{
+    ViewData["Title"] = "Add New User";
+    Layout = "~/Areas/Clients/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2 class="medium-title">企業様ご招待</h2>
+    <form method="post">
+        @await  Html.PartialAsync("AlertPartial")
+        <div class="row">
+            <!--Name-->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label required">苗字（姓</label>
+                    <input type="text" placeholder="" asp-for="LastName" class="form-control" required autofocus>
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label required">名前（名</label>
+                    <input type="text" placeholder="" asp-for="FirstName" class="form-control" required autofocus>
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label required">メールアドレス</label>
+                    <input type="text" placeholder="例) name@xyz.com" asp-for="Email" class="form-control" required autofocus>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Phone" class="control-label required">電話番号</label>
+                    <input type="text" placeholder="例) 07011111111" asp-for="Phone" class="form-control"  autofocus>
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="PostalAddrss1" class="control-label">郵便番号</label>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-right:0px">
+                            <input type="text" id="postalAddress1" placeholder="" class="form-control" asp-for="PostalAddrss1" maxlength="3" data-error="Please enter three digits" autofocus pattern="^[0-9]{3}$">
+                        </div><div class="col-sm-1"><h2>-</h2></div>
+                        <div class="col-sm-6">
+                            <input type="text" id="postalAddress2" placeholder="" class="form-control" asp-for="PostalAddrss2" maxlength="4" data-error="Please enter four digits" autofocus pattern="^[0-9]{4}$">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <div id="injapanProvince">
+                        <label for="province" class="control-label">都道府県</label>
+                        <select class="form-control" asp-for="ProvinceID" asp-items="Model.Provinces"  data-error="Please select province" autofocus>
+                            <option value="0">-- 選択 --</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="city" class="control-label">市区町村</label>
+                    <input type="text" asp-for="CityName" placeholder="" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="city" class="control-label">町名以下</label>
+                    <input type="text" asp-for="Town" placeholder="" class="form-control">
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+
+                    <label for="address" class="control-label">住所</label>
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                    <input type="text" id="address" placeholder="" class="form-control" asp-for="Address" data-error="please enter address">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <input type="submit" class="btn btn-common" value="保存" />
+            </div>
+            <div class="col-md-6">
+
+            </div>
+        </div>
+    </form>
+  
+</div>
+@section  Scripts{ 
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+
+

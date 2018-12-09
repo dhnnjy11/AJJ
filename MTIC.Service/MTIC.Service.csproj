@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Import\**" />
+    <EmbeddedResource Remove="Import\**" />
+    <None Remove="Import\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="7.1.1" />
+    <PackageReference Include="MailKit" Version="2.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ajj.Core\Ajj.Core.csproj" />
+  </ItemGroup>
+
+</Project>

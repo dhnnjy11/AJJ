@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "AllUsersAsync";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="medium-title">Users List</h2>
+<table id="jobstable" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Prefecture</th>
+            <th>Register Date</th>
+        </tr>
+    </thead>
+</table>
+
+@section Scripts {
+    <script>
+
+        var clienttable = $('#jobstable').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                "url": "@Url.Action("GetUsers", "User", new { Area = "admin" })",
+                "type": "POST",
+                "datatype": 'json'
+            },
+            "columns": [
+                { "data": "userId" },
+                { "data": "email" },
+                { "data": "phoneNumber" },
+                { "data": "prefecture" },
+                { "data": "registeredDate", orderable: true },
+            ]
+        });
+
+        $('#inputfile').on('change', function () {
+            $('.file-upload-input + label > span').text(this.files[0].name);
+        });
+    </script>
+}
+

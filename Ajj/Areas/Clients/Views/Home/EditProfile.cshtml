@@ -1,0 +1,166 @@
+﻿@using Ajj.Areas.Clients.Models;
+@model ClientEditViewModel;
+@inject UserManager<ApplicationUser> userManager
+@{
+    ViewData["Title"] = "Edit Profile";
+    Layout = "~/Areas/Clients/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="medium-title">
+    プロファイルを編集
+    @*Edit Profile*@
+</h2>
+<div class="row">
+    <div class="col-md-12">
+        @await Html.PartialAsync("_AlertPartial")
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-9">
+        <form id="registerform" role="form" method="post" asp-area="clients" asp-controller="home" asp-action="EditProfile" enctype="multipart/form-data">
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label required">名前（名)</label>
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                        <input type="text" asp-for="FirstName" placeholder="" class="form-control" required data-error="Please enter contact person name" autofocus>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label required">苗字（姓)</label>
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                        <input type="text" asp-for="LastName" placeholder="" class="form-control" required data-error="Please enter contact person name" autofocus>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="PhoneNumber" class="control-label required">
+                            電話番号(応募向け)
+                        </label>
+                        <input type="tel" id="Phone" placeholder="" asp-for="PhoneNumber" class="form-control" autofocus pattern="^[0-9]{10,15}$" title="Phone number must be 10 to 15 digit long!" required>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <input type="hidden" asp-for="ClientID" />
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="companyname" class="control-label required">
+                            企業名
+                            @*Company Name*@
+                        </label>
+                        <input type="text" id="first_name" placeholder="" asp-for="CompanyName" class="form-control" required autofocus readonly="!@User.IsInRole("client")">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="companyname" class="control-label required">
+                            企業URL
+                            @*Company Domain*@
+                        </label>
+                        <input type="text" placeholder="" asp-for="WebsiteUrl" class="form-control" required autofocus readonly="!@User.IsInRole("client")">
+                    </div>
+                </div>
+            </div>
+           
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="postalAddress" class="control-label required">
+                                郵便番号
+                            </label>
+                            <div class="row">
+                                <div class="col-sm-4" style="padding-right:0px">
+                                    <input type="text" id="postalAddress1" placeholder="" class="form-control" asp-for="PostalAddrss1" maxlength="3" autofocus pattern="^[0-9]{3}$" required  readonly="!@User.IsInRole("client")">
+                                </div><div class="col-sm-1"><h2>-</h2></div>
+                                <div class="col-sm-6">
+                                    <input type="text" id="postalAddress2" placeholder="" class="form-control" asp-for="PostalAddrss2" maxlength="4" autofocus pattern="^[0-9]{4}$" required  readonly="!@User.IsInRole("client")">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <div id="injapanProvince">
+                                <label for="province" class="control-label">
+                                    都道府県
+                                </label>
+                                <select class="form-control" asp-for="ProvinceID" asp-items="Model.Provinces" autofocus></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="city" class="control-label">
+                                市区町村
+                            </label>
+                            <input type="text" asp-for="CityName" placeholder="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="city" class="control-label">
+                                町域
+                            </label>
+                            <input type="text" asp-for="Town" placeholder="" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+
+                            <label for="address" class="control-label required">
+                                住所
+                            </label>
+                            <input type="text" id="address" placeholder="" class="form-control" asp-for="Address" required data-error="please enter address"  readonly="!@User.IsInRole("client")">
+                            <div class="help-block with-errors"></div>
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="inputfile" class="control-label">
+                                画像添付（仕事風景など）
+                            </label>
+                            <input id="inputfile" class="form-control" type="file" asp-for="Files" accept=".png,.jpeg,.jpg"  readonly="!@User.IsInRole("client")" />
+
+                        </div>
+                    </div>
+                </div>
+       
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-common">
+                            保存
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script>
+        Helper.AutoFillByPostal();
+        $('#UserName').focusout(function () {
+            Helper.VerifyUserName($(this));
+        })
+    </script>
+}

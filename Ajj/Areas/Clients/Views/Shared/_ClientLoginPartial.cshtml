@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Ajj.Models
+
+@inject SignInManager<ApplicationUser> signInManager
+@inject UserManager<ApplicationUser> userManager
+
+@if (signInManager.IsSignedIn(User) && (@User.IsInRole("client") || @User.IsInRole("client-editor")))
+{
+    <form asp-area="" asp-controller="Account" asp-action="Logout" asp-route-role="client" method="post" id="logoutForm" class="navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="left">
+                <a asp-area="clients" asp-controller="Home" asp-action="EditProfile" title="Manage">
+                    <span>Hello </span>
+                    @userManager.GetUserName(User)
+                </a>
+            </li>
+            <li class="right">
+                @*<button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>*@
+                <a href="#" onclick="document.getElementById('logoutForm').submit();">
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </form>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right float-right">
+        <li class="left">
+            <a href="~/Account/Register">
+                <i class="ti-pencil-alt"></i> Register
+            </a>
+        </li>
+        <li class="right">
+            <a href="~/Account/Login">
+                <i class="ti-lock"></i>  Log In
+            </a>
+        </li>
+    </ul>
+}

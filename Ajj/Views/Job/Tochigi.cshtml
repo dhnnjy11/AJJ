@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Tochigi";
+}
+
+<!-- Find Job Section Start -->
+<section>
+    <div class="container">
+        <div class="row">
+            <h2 class="medium-title">Hot Jobs</h2>
+            <span class="section-title">
+                <a href="/Job/Tokyo"  class="btn btn-success btn-rm">Tokyo</a>&nbsp;
+                <a href="/Job/Chiba"  class="btn btn-success btn-rm">Chiba</a>&nbsp;
+                <a href="/Job/Gunma"  class="btn btn-success btn-rm">Gunma</a>&nbsp;
+                <a href="/Job/Ibaraki"  class="btn btn-success btn-rm">Ibaraki</a>&nbsp;
+                <a href="/Job/Kanagawa"  class="btn btn-success btn-rm">Kanagawa</a>&nbsp;
+                <a href="/Job/Saitma"  class="btn btn-success btn-rm">Saitama</a>&nbsp;
+                <a href="/Job/Tochigi"  class="btn btn-common btn-rm">Tochigi</a>&nbsp;
+            </span>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        @await Html.PartialAsync("_JobView")
+    </div>
+</section>

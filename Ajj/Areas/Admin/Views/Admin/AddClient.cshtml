@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Add New Client";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="medium-title">@ViewData["Title"]</h2>
+<br />
+@if (@ViewBag.ErrorMsg != null)
+{
+    <p class="alert alert-danger">@ViewBag.ErrorMsg</p>
+    <br />
+}
+    <div class="row">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="col-md-9">
+            <form id="registerform" role="form" method="post" asp-controller="Admin" asp-action="AddClient" asp-route-returnurl="@ViewData["ReturnUrl"]">
+
+                @await Html.PartialAsync("_ClientForm")
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button id="addClient" type="submit" class="btn btn-primary btn-block">Add Client</button>
+                        </div>
+                    </div>
+                </div>
+            </form> <!-- /form -->
+        </div>
+    </div>
+@section Scripts{
+        @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script>
+        Helper.AutoFillByPostal();
+    </script>
+}

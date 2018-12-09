@@ -1,0 +1,47 @@
+﻿@using Ajj.ViewModels.UploadViewModel;
+@model IEnumerable<UploadJobViewModel>
+@{
+    ViewData["Title"] = "TestUpload";
+    Layout = "~/Areas/Admin/Views/Shared/_AnonymousLayout.cshtml";
+}
+
+<h2 class="medium-title">Test Upload</h2>
+<form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="TestUploadAsync">
+    <div class="row">
+        <div class="col-lg-5">
+            <input type="file" name="files" multiple />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-5">
+            <input class="btn btn-common" type="submit" value="Upload" />
+        </div>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Contract_Type</th>
+            <th>Job_Address</th>
+            <th>Is_Trasporation_Include</th>
+            <th>JobTitleJP</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model != null){
+        @foreach(var item in Model){
+        <tr>
+            <td>@item.ContractType</td>
+            <td>@item.JobAddress</td>
+            <td>@item.IsTrasporationInclude</td>
+            <td>@item.JobTitleJP</td>
+        </tr>
+        }
+        }
+    </tbody>
+</table>
+
+@section Scripts{
+    <script>
+    </script>
+}

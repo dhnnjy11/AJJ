@@ -1,0 +1,95 @@
+﻿@using Ajj.Models.JobViewModels
+@model IEnumerable<JobDetailsViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="medium-title">All Job List</h2>
+@await Html.PartialAsync("_AlertPartial")
+<form method="post" enctype="multipart/form-data" asp-area="admin" asp-controller="JobInfo" asp-action="UploadAsync">
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-10">
+                <b>Browse file to upload the jobs (only .xls, .xlsx)</b>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <input id="inputfile" class="file-upload-input" type="file" name="files" accept=".xls,.xlsx" />
+
+                <label for="inputfile" class="file-upload-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+                    <span>Choose a file...</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <input class="btn btn-border btn-sm" type="submit" value="Upload" />
+        </div>
+    </div>
+</form>
+<br />
+
+<table id="jobstable" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Job ID</th>
+            <th>Job Title</th>
+            <th>Company Name </th>
+            <th>Prefrecture</th>
+            <th>Post Date</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+</table>
+<br />
+
+@section Scripts {
+    <script>
+
+        var clienttable = $('#jobstable').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                "url": "@Url.Action("AllJobsBak", "JobInfo", new { Area = "admin" })",
+                "type": "POST",
+                "datatype": 'json'
+            },
+            "columns": [
+                { "data": "jobID" },
+                { "data": "jobTitle" },
+                { "data": "companyName" },
+                { "data": "provinceName" },
+                { "data": "postDate" },
+                {
+                    "data": "jobID",
+                    "searchable": false,
+                    "sortable": false,
+                    "render": function (id, type, full, meta) {
+                        var url = "@Url.Action("Edit", "Job", new { area = "clients"})" + "/" + id;
+                        return '<a class="btn btn-success btn-sm" href="' + url +'">Edit</a>';
+                    }
+                },
+                {
+                    "data": "jobID",
+                    "searchable": false,
+                    "sortable": false,
+                    "render": function (id, type, full, meta) {
+                        var url = "@Url.Action("Detail", "Job", new { area = "clients"})" + "/" + id;
+                        return '<a class="btn btn-success btn-sm" href="' + url +'">Details</a>';
+                    }
+                        },
+            ]
+        });
+
+        $('#inputfile').on('change', function () {
+            $('.file-upload-input + label > span').text(this.files[0].name);
+        });
+    </script>
+}

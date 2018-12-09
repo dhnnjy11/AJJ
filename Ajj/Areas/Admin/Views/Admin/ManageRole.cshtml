@@ -1,0 +1,39 @@
+﻿@using Ajj.Areas.Admin.Models;
+
+@model UserRoleViewModel
+@{
+    ViewData["Title"] = "ManageRole";
+    Layout = "~/Areas/Clients/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="medium-title">Manage Roles</h2>
+
+<div class="row">
+    <div class="col-md-9">
+        <form id="registerform" role="form" method="post" asp-area="Admin" asp-controller="User" asp-action="ManageRole" asp-route-returnurl="@ViewData["ReturnUrl"]" data-toggle="validator">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div id="injapanProvince">
+                            <label for="province" class="control-label">Business Industry</label>
+                            <select class="form-control" asp-for="UserID" asp-items="Model.Users" data-error="Please select province" required autofocus></select>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div id="injapanProvince">
+                            <label for="province" class="control-label">Business Industry</label>
+                            <select class="form-control" asp-for="RoleID" asp-items="Model.Roles" data-error="Please select province" required autofocus></select>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

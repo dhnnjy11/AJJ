@@ -1,0 +1,84 @@
+﻿@using Ajj.ViewModels.HomeViewModel
+@model SendQueryViewModel
+@{
+    ViewData["Title"] = "Contact Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2 class="medium-title">@ViewData["Title"]</h2>
+    @await Html.PartialAsync("_AlertPartial")
+    <form asp-controller="Home" asp-action="SendQueryAsync" method="post">        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label required">
+                        Name
+                    </label>
+                    <input type="text" placeholder="Input your name" asp-for="Name" class="form-control" autofocus>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label required">
+                        Email Address
+                    </label>
+                    <input type="text" placeholder="Input your email" asp-for="Email" class="form-control" autofocus>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label asp-for="ConfirmEmail" class="control-label required">
+                        Confirm Email Address
+                    </label>
+                    <input type="text" placeholder="Input your confirm email" asp-for="ConfirmEmail" class="form-control" autofocus>
+                    <span asp-validation-for="ConfirmEmail" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label asp-for="Subject" class="control-label required">
+                        Subject
+                    </label>
+                    <input type="text" placeholder="what is issue / question ?" asp-for="Subject" class="form-control" autofocus>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label">
+                        Description
+                    </label>
+                    <textarea placeholder="Please describe issue here..." asp-for="Description" rows="5" class="form-control" autofocus>
+</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+
+                    <input type="submit" class="btn btn-common">
+                    
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+@section Scripts {
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+

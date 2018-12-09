@@ -1,0 +1,67 @@
+﻿@using Ajj.ViewModels;
+@model IEnumerable<PrefrencesViewModel>
+@{
+    ViewData["Title"] = "Select Job Prefrences";
+
+}
+<section class="section__job-prefer">
+
+    <div class="container">
+        <div class="section-header">
+            <h2 class="medium-title">Please select Job Category</h2>
+            <p style="color:orangered;font-weight:600">Categoires that is highlighted, currenly has jobs available</p>
+            <p class="section-text">
+                Please select type of industry, that you are looking for job. It will help us to propose jobs that matches your skill.
+            </p>
+        </div>
+        <form method="post" asp-controller="Job" asp-action="SelectPrefrencesAsync">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3">
+                        <div class="checkbox">
+                            @if (item.HasJob)
+                            {
+                                <label style="color:orangered;font-weight:600"><input asp-for="@item.IsSelected" value="@item.Id">@item.Name</label>
+                            }
+                            else
+                            {
+                                <label><input asp-for="@item.IsSelected" value="@item.Id">@item.Name</label>
+                            }
+                        </div>
+
+                        @*<label class="checkbox-inline">
+                                <input type="checkbox" value="@item.Id"> @item.Name
+                            </label>*@
+                    </div>
+                }
+
+            </div>
+
+
+            <br />
+            <div class="row">
+                <div class="col-md-offset-2 col-md-4 col-sm-4" style="margin-bottom:20px;">
+                    <button type="submit" class="btn btn-common btn-50per">
+                        Save Preferences
+                    </button>
+                </div>
+
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <a asp-controller="Home" asp-action="Index" class="btn-50per" style="text-decoration:underline;text-transform:uppercase">
+                        Skip
+                    </a>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+</section>
+
+

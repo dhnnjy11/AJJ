@@ -1,0 +1,499 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="announcment">
+                <div class="announcment__head">Important notice for user</div>
+                <p class="announcment__text">Do you have <a class="announcment__link" href="http://gaijinbank.com" target="_blank"> GaijinBank </a>account?  If yes, you do not have to register for below and you can directly login <a class="announcment__link" href="http://www.jobsjapan.net/Account/Login">here.</a></p>
+                <p class="announcment__text">If you are having any problem in registration, please <a class="announcment__link" href="http://www.jobsjapan.net/Home/SendQuery">click here </a>and write to us.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <form id="registerform" role="form" method="post" asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">
+
+                <br />
+                <h2 class="medium-title">Registration Form</h2>
+                <br />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <!--<div asp-validation-summary="All" class="text-danger"></div>-->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="firstName" class="control-label required">First Name</label>
+                            <input type="text" id="first_name" name="FirstName" placeholder="" asp-for="FirstName" class="form-control" required data-error="Please enter first name" autofocus>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="last_name" class="control-label required">Last Name</label>
+                            <input type="text" id="last_name" name="LastName" placeholder="" asp-for="LastName" class="form-control" required data-error="Please enter last name" autofocus />
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>
+                @if (Model.PageType != "Edit")
+                {
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="user_pass" class="control-label required">Password</label><span style="color:red;">(Please enter atleast 8 characters)</span>
+                                <input type="password" asp-for="Password" placeholder="" class="form-control" required autofocus />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="ConfirmPassword" class="control-label required">Confirm Password</label>
+                                <input type="password" asp-for="ConfirmPassword" placeholder="" class="form-control" required autofocus />
+
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="Email" class="control-label required">Email</label>
+                            <input type="email" id="user_email" name="Email" placeholder="" asp-for="Email" class="form-control" required data-error="Please enter email addresss" autofocus>
+                            <div class="help-block with-errors"></div>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="PhoneNumber" class="control-label">Phone</label>
+                            <input type="tel" placeholder="" asp-for="PhoneNumber" class="form-control" data-error="Phone number should be 10 to 15 digits" autofocus pattern="^[0-9]{10,15}$">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="">
+                        <!--no class is required to keep it aligned-->
+                        <div class="form-group">
+                            
+                            <div class="col-sm-2">
+                                <label for="BirthYear" class="control-label required">Date of Birth</label>
+                                <select id="BirthYear" class="form-control" asp-for="BirthYear" name="BirthYear" data-group="DOB" required data-error="Please select birth year">
+                                    <option value="">Year</option>
+                                    @for (int i = 1960; i < 2015; i++)
+                                    {
+                                        <option>@i</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="BirthYear" class="text-danger"></span>
+                            </div>
+                            <div class="col-sm-2">
+                                <label for="" class="control-label">&nbsp;</label>
+                                <select id="BirthMonth" class="form-control" name="BirthMonth" asp-for="BirthMonth" data-group="DOB" required data-error="Please select your date of birth">
+                                    <option value=""> Month</option>
+                                    @for (int i = 1; i < 13; i++)
+                                    {
+                                        <option>@i</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="BirthMonth" class="text-danger"></span>
+                            </div>
+                            <div class="col-sm-2">
+                                <label for="" class="control-label">&nbsp;</label>
+                                <select id="BirthDay" class="form-control" asp-for="BirthDay" name="BirthDay" data-group="DOB" required data-error="Please select your date of birth">
+                                    <option value=""> Day</option>
+                                    @for (int i = 1; i < 32; i++)
+                                    {
+                                        <option>@i</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="BirthDay" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="phone" class="control-label">Age</label>
+                            <input type="text" id="Age" placeholder="" asp-for="Age" class="form-control" name="Age" data-error="Please select your date of birth">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="Gender" class="control-label required">Gender</label>
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <label class="radio-inline">
+                                        <input type="radio" id="maleRadio" asp-for="Gender" value="M" name="Gender" checked="checked">Male
+                                    </label>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="radio-inline">
+                                        <input type="radio" id="femaleRadio" value="F" asp-for="Gender" name="Gender">Female
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="country" class="control-label required">Nationality</label>
+
+                            <select class="form-control" asp-for="CountryID" asp-items="Model.Countries" required data-error="Please select nationality" autofocus>
+                                <option value="">--Choose--</option>
+                            </select>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="phone" class="control-label required">Visa</label>
+                            <input type="hidden" asp-for="VisaTypeId" />
+                            <select id="VisaType" class="form-control" asp-for="VisaTypeParentId" asp-items="Model.VisaTypes" required data-error="Please select visa" autofocus>
+                                <option value="">--Choose--</option>
+                            </select>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="dvSubVisaType" class="form-group" style="display:none">
+                            <label for="SubVisaType" class="control-label required">
+                                Please specify your activities from below.
+                            </label>
+                            <select id="SubVisaType" class="form-control" name="SubVisaType" required></select>
+                        </div>
+                    </div>
+                </div>
+                <div id="dvPermitToWork" class="row" style="display:none">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="IsPermitToWork" class="control-label required">
+                                Do you have work permission?
+                            </label>
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <label class="radio-inline">
+                                        <input id="yespermitted" type="radio" value="true" name="IsPermitToWork" checked="checked">Yes
+                                    </label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label class="radio-inline">
+                                        <input id="notpermitted" type="radio" value="false" name="IsPermitToWork">No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- /.form-group -->
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="injapan" class="control-label required">Are you living in Japan ?</label>
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <label class="radio-inline">
+                                        <input type="radio" id="injapan" value="Y" name="InJapan" checked="checked">Yes (In Japan)
+                                    </label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label class="radio-inline">
+                                        <input type="radio" id="othercountry" value="N" name="InJapan">No (Other Countries)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- /.form-group -->
+                </div>
+                <div id="OtherCountryDiv" class="row" style="display:none">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="OtherCountry" class="control-label">Country</label>
+                            <input type="text" class="form-control" asp-for="OtherCountry" />
+                        </div>
+                    </div>
+                </div>
+                <div id="InjapanDiv">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label required" for="IsRememberPostal">Do you remember Postal code?</label>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <label class="radio-inline">
+                                            <input type="radio" value="Y" name="IsRememberPostal" checked="checked">Yes
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="radio-inline">
+                                            <input type="radio" value="N" name="IsRememberPostal">No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- /.form-group -->
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="postalAddress" class="control-label required">Postal Address</label>
+                                <div class="row">
+                                    <div class="col-sm-4" style="padding-right:0px">
+                                        <input type="text" id="postalAddress1" placeholder="" class="form-control" name="PostalAddrss1" asp-for="PostalAddrss1" maxlength="3" data-error="Please enter three digits" autofocus pattern="^[0-9]{3}$" required>
+                                    </div><div class="col-sm-1"><h2>-</h2></div>
+                                    <div class="col-sm-6">
+                                        <input type="text" id="postalAddress2" placeholder="" class="form-control" name="PostalAddrss2" asp-for="PostalAddrss2" maxlength="4" data-error="Please enter four digits" autofocus pattern="^[0-9]{4}$" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <div id="injapanProvince">
+                                    <label for="province" class="control-label">Province</label><span style="color:red;">*</span>
+                                    <select class="form-control" asp-for="ProvinceID" asp-items="Model.Provinces" required data-error="Please select province" autofocus>
+
+                                        <option value="">--Choose--</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="city" class="control-label required">CityName</label>
+                                <input type="text" asp-for="CityName" placeholder="" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="city" class="control-label  required">Town</label>
+                                <input type="text" asp-for="Town" placeholder="" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+
+                                <label for="address" class="control-label required">Address</label>
+                                <input type="text" id="address" placeholder="" class="form-control" asp-for="Address" name="Address" required data-error="please enter address">
+                                <div class="help-block with-errors"></div>
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label for="" class="control-label">
+                            <h4>Pre-Registration Consent Procedures</h4>
+                        </label>
+                        <textarea class="form-control" rows="5" readonly>
+IN REGARD TO USER POLICY AND THE HANDLING OF PERSONAL INFORMATION
+All Jobs Japan Co., Ltd. (hereafter “AJJ”), have established the following terms of use. Please confirm the following and we hope for your understanding and consent. Submission of personal information is optional, however , if you do not submit information we may not be able to provide you with necessary information. All applicants must come to our office for an interview prior to actual employment.
+
+In regard to the handling of personal information
+1.Use of personal information
+AJJ will use his/her personal information for the following reasons. When personal information is used beyond its original purpose, we will obtain prior consent from the information owner.
+Personal information refers to information containing the name and the date of birth of any person, other dates and statements and/or a number assigned specifically to that person, which enable readers to identify that particular individual. (Including information that may not be adequate by itself but can easily be referenced against other information and help identify the person when accessed in conjunction with such other information).
+1.Inducement to suitable employment, work related communication and contract agreements 2. Labor management 3. Provision of health and welfare benefits 4. Contacts in case of emergencies 5. Employment check 6. Provision of service requested to AJJ 7. Provision of information from AJJ 8. Research and marketing activities related to business activities of AJJ and request for cooperation to signatures. We may also use information to reprint publications of our company or provide information to businesses and corporations, various statistical data or sample information as analytical information. We will do so upon processing and aggregating the data in a way that a particular individual cannot be identified. 9. Renewal and modification of personal information provided to AJJ
+
+Provision or disclosure of personal information to a third party
+AJJ will not provide personal information to a third party except for the following cases and for purposes specified in “1.use of personal information”.
+1. Cases in which we have consent from the information owner
+2. Cases in which the information is required by laws and regulations
+3. Cases in which the personal information is necessary to protect a human life or property and in which it is difficult to obtain the consent of the information owner.
+4. Cases in which the personal information is specially necessary for improving public health or promoting the sound growth of children and in which it is difficult to obtain the consent of the information owner.
+5. Cases in which the personal information is necessary for cooperating with local authorities or the government, in executing the affairs prescribed by laws and regulations and in which obtaining the consent of the person is likely to impede the execution of the affairs concerned
+
+Disclosure of personal information
+AJJ will, in a reasonable period of time and to a reasonable extent, address any request of a personal information owner who wishes to have his / her information disclosed. We will do so upon confirming that the person in question is the applicant him/her self.
+
+Revision of personal information
+AJJ will, in a reasonable period of time and to a reasonable extent, address any request of an information owner who wishes to correct, stop the use of, delete or add his/her own personal information provided to AJJ. We will do so upon confirming that the person in question is the applicant him/her self.
+
+Termination of use or deletion of personal information
+AJJ will, in a reasonable period of time and to a reasonable extent, address any request of an information owner who wishes to terminate the use of or delete his/her personal information provided to AJJ. We will do so upon confirming that the person in question is the applicant him/her self. Upon the termination of use or deletion of personal information, we may not be able to provide the service he/she desires. We ask for your understanding and cooperation. We may not be able to terminate or delete personal information held under applicable laws and regulations.
+
+Contact point for inquires
+If you have any questions or opinions regarding personal information, please contact our information desk. Our contact details are as follows;
+
+All Jobs Japan Co., Ltd., General Affairs Department, Personal Information Management Committee
+Our office hours are from 9am to 6:30 pm, Monday to Friday.
+</textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="TnCYes" class="control-label required">
+                                Please click Yes of Application Agreement for next step.
+                            </label>
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <label class="radio-inline">
+                                        <input type="radio" value="true" name="IsAgreed">Yes
+                                    </label>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="radio-inline">
+                                        <input type="radio" value="false" name="IsAgreed">No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button id="register" type="submit" class="btn btn-primary btn-block" style="opacity:1">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </form> <!-- /form -->
+        </div>
+    </div><br /><br />
+</div>
+
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        $('#registerform').validator().on('submit', function (e) {
+            if (e.isDefaultPrevented()) {
+                // handle the invalid form...
+                $('html, body').animate({ scrollTop: $(".has-error:first :input").offset().top - 50 }, 500);
+                $(".has-error:first :input").focus();
+
+            } else {
+                // everything looks good!
+            }
+        });
+      
+        Helper.AutoFillByPostal();
+        $('#register').click(function () {
+            var chckedValue = $('input[name="IsAgreed"]:checked').val();
+            if (!(chckedValue == "true")) {
+                alert("Please click Yes of Application Agreement for next step.");
+                return false;
+            }
+
+        });
+        $('select[data-group="DOB"]').change(function (item) {
+            var year = $('#BirthYear').val();
+            var month = $('#BirthMonth').val()
+            var day = $('#BirthDay').val();
+            if (day != "Day" && year != "Year" && month != "Month") {
+                var dobString = $('#BirthYear').val() + "-" + $('#BirthMonth').val() + '-' + $('#BirthDay').val();
+                $('#Age').val(getAge(dobString));
+            }
+        });
+
+        $('#VisaType').change(function () {
+            $.getJSON("@Url.Action("GetSubVisa", "Home")", { parentId: $(this).val() }, function (data) {
+                $('#dvSubVisaType').hide();
+                $('#dvPermitToWork').hide();
+                console.log(data);
+                if (data.length > 1) {
+                    $('#dvSubVisaType').show();
+                    $('#SubVisaType').empty();
+                    $('#SubVisaType').append("<option value=''>--Choose Category --</option>");
+                    $.each(data, function (index, value) {
+                        $('#SubVisaType').append("<option data-needpermission="+value["needPermission"]+" value='" + value["id"] + "'>" + value["subCategory"] + "</option>");
+                    });
+                }
+                else if (data.length === 1) {
+                    $('#VisaTypeId').val(data[0].id)
+                    console.log(data[0].needPermission);
+                    if (data[0].needPermission === 'Y') {
+                        $('#dvPermitToWork').show();
+                        //$('#yespermitted').val(true).trigger("click");
+                    }
+                    else {
+                        $('#dvPermitToWork').hide();
+                    }
+
+                }
+
+            });
+
+        });
+
+        $('#SubVisaType').on('change', function () {
+            var visatypeid = $(this).val();
+            $('#VisaTypeId').val(visatypeid);
+            var needPermission = $('option:selected', this).attr('data-needpermission');
+            if (needPermission == 'Y') {
+                $('#dvPermitToWork').show();
+            }
+            else {
+                $('#dvPermitToWork').hide();
+            }
+
+        });
+
+        $('input[name="InJapan"]').change(function (item) {
+            if (item.target.value != "Y") { //when not in japan
+                $('#OtherCountryDiv').show();
+                $('#InjapanDiv').hide();
+
+            }
+            else { // when in japan
+                $('#OtherCountryDiv').hide();
+                $('#InjapanDiv').show();
+
+            }
+
+        });
+
+        $('input[name="IsRememberPostal"]').change(function (item) {
+            if (item.target.value != "Y") { //when postal code is optional
+                $('label[for="postalAddress"]').removeClass('required');
+                $('#postalAddress1').removeAttr('required');
+                $('#postalAddress2').removeAttr('required');
+                $('#ProvinceID').prop('readonly', false);
+                $('#ProvinceID').attr("style", "pointer-events: auto;background-color:#fff");
+                $('#CityName').prop('readonly', false);
+                $('#Town').prop('readonly', false);
+
+            }
+            else { //when postal code is mandatary
+                $('label[for="postalAddress"]').addClass('required');
+                $('#postalAddress1').attr('required', true);
+                $('#postalAddress2').attr('required', true);
+                $('#ProvinceID').prop('readonly', true);
+                $('#ProvinceID').attr("style", "pointer-events: none;background-color:#eee");
+                $('#CityName').prop('readonly', true);
+                $('#Town').prop('readonly', true);
+
+            }
+
+        });
+
+        function getAge(dateString) {
+            var today = new Date();
+            var birthDate = new Date(dateString);
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+    </script>
+
+}

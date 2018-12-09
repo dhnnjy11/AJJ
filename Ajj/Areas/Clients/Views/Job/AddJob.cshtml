@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Add Job";
+    Layout = "~/Areas/Clients/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="medium-title">
+    仕事情報を入力する
+</h2>
+@await Html.PartialAsync("_AlertMsg")
+<div class="row">
+    <div class="col-md-9">
+        <form id="registerform" role="form" method="post" asp-area="clients" asp-controller="Job" asp-action="Add" asp-route-returnurl="@ViewData["ReturnUrl"]">
+            @await Html.PartialAsync("_JobForm")
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <button id="postnewjob" type="submit" class="btn btn-primary">
+                            仕事情報を登録
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form> <!-- /form -->
+    </div>
+</div>
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        debugger;
+        Helper.AutoFillByPostal();
+        $('#BusinessstreamID').on('change', function () {
+            debugger;
+            Helper.GetJobCategory(this, $('#JobCategoryId')[0]);
+
+        });
+
+        $('input[name="TrasportationIncluded"]').on('change', function () {
+            var istrasporationIncluded = this.value;
+            Helper.CheckTransporation(istrasporationIncluded);
+
+        })
+    </script>
+
+}

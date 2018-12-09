@@ -1,0 +1,83 @@
+﻿@model ReflectionIT.Mvc.Paging.PagingList<Ajj.Models.JobViewModels.JobDetailsViewModel>
+@using ReflectionIT.Mvc.Paging
+@addTagHelper *, ReflectionIT.Mvc.Paging
+
+@inject SignInManager<ApplicationUser> SignInManager
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="job-search-result">Total Jobs found : @ViewData["TotalJobsFound"]</h4>
+    </div>
+    <div class="col-md-12" style="margin-top:20px;">
+        <ul class="pagination pull-right">
+            <vc:pager paging-list="@Model" />
+        </ul>
+    </div>
+    <div class="col-md-12">
+        @foreach (var item in Model)
+        {
+
+            <div class="job-display">
+                <input type="hidden" value="@item.JobID" />
+                <div class="row">
+                    <div class="col-md-2">
+                        <img class="img img-responsive job-display__thumbnail" src="@item.CompanyImageUrl" alt="@item.CompanyName" />
+                    </div>
+                    <div class="job-display__content col-md-6">
+                        <a href="~/Job/JobDetails/@item.JobID"><h4 class="job-heading">@item.JobTitle</h4></a>
+
+                        <span class="job-subheading"><i class="fa fa-building-o">&nbsp;&nbsp;</i>@item.CompanyName</span>
+                        <br />
+                        <span class="job-subheading" style="text-transform:uppercase">
+                            <i class="fa fa-map-marker">&nbsp;&nbsp;&nbsp;</i>@item.ProvinceName,
+                            @if (item.CityName_En != "N/A")
+                            {
+                                @item.CityName_En
+                            }
+                            else
+                            {
+                                @item.CityName
+
+                            }
+                            ,
+                            @if (item.Town_En != "N/A")
+                            {
+                                @item.Town_En
+                            }
+                            else
+                            {
+                                @item.Town
+
+                            }
+                        </span>
+                        <br />
+                        @if (item.Salary_Hourly != "")
+                        {
+                            <span class="job-subheading"><i class="fa fa-money">&nbsp;&nbsp;</i>@item.Salary_Hourly&nbsp;per hour</span>
+
+                        }
+                        @if (item.Salary_Monthly != "")
+                        {
+                            <span class="job-subheading"><i class="fa fa-money">&nbsp;&nbsp;</i>@item.Salary_Monthly&nbsp;per Month</span>
+
+                        }
+                    </div>
+                    <div class="col-md-4">
+                        @item.ContractType
+                        <!--<span class="job-subheading"><i class="fa fa-clock-o">&nbsp;&nbsp;</i>@item.PostedDays</span>&nbsp;days ago-->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-2">
+                        <a asp-controller="Job" asp-action="JobDetails" asp-route-id="@item.JobID" class="btn-text">More Detail&rarr;</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="col-md-12" style="margin-top:20px;">
+        <ul class="pagination pull-right">
+            <vc:pager paging-list="@Model" />
+        </ul>
+    </div>
+</div>

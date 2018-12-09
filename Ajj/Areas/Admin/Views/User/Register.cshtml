@@ -1,0 +1,99 @@
+﻿@using Ajj.Areas.Admin.Models
+
+@model RegisterUserViewModel
+@{
+    ViewData["Title"] = "RegisterUser";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<form id="registerform" role="form" method="post" asp-area="admin" asp-controller="user" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" data-toggle="validator">
+    <br />
+    <h2 class="medium-title">Registration Form</h2>
+    <br />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    @if (ViewData["message"] != null)
+    {
+        <p class="alert alert-danger">@ViewData["message"]</p>
+
+    }
+    @*<div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="firstName" class="control-label">First Name</label><span style="color:red;">*</span>
+                    <input type="text" id="first_name" name="FirstName" placeholder="" asp-for="FirstName" class="form-control" required data-error="Please enter first name" autofocus>
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="last_name" class="control-label">Last Name</label><span style="color:red;">*</span>
+                    <input type="text" id="last_name" name="LastName" placeholder="" asp-for="LastName" class="form-control" required data-error="Please enter last name" autofocus />
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+        </div>*@
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="Email" class="control-label">Email</label><span style="color:red;">*</span>
+                <input type="email" placeholder="" asp-for="Email" class="form-control" required data-error="Please enter email addresss" autofocus>
+                <div class="help-block with-errors"></div>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="PhoneNumber" class="control-label">Phone</label>
+                <input type="tel" id="Phone" placeholder="" asp-for="PhoneNumber" class="form-control" data-error="Phone number show be 10 to 15 digits" autofocus pattern="^[0-9]{10,15}$" title="Phone number must be 10 to 15 digit long!" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="user_pass" class="control-label">Password</label><span style="color:red;">*</span><span style="color:red;">(Please enter atleast 8 characters)</span>
+                <input type="password" id="Password" name="Password" placeholder="" class="form-control" required data-error="Please enter atleast 8 characters" pattern="^.{8,20}$" autofocus />
+                <div class="help-block with-errors"></div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="ConfirmPassword" class="control-label">Confirm Password</label><span style="color:red;">*</span>
+                <input type="password" asp-for="ConfirmPassword" placeholder="" class="form-control" required data-error="Please enter atleast 8 characters" pattern="^.{8,20}$" autofocus />
+                <div class="help-block with-errors"></div>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label class="radio-inline">
+                    <input type="radio" value="admin" asp-for="RoleName" checked="checked">Admin
+                </label>
+            </div>
+            <div class="col-sm-1">
+                <label class="radio-inline">
+                    <input type="radio" value="user" asp-for="RoleName">User
+                </label>
+            </div>
+        </div> <!-- /.form-group -->
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="form-group">
+                <button id="register" type="submit" class="btn btn-primary btn-block">Register</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

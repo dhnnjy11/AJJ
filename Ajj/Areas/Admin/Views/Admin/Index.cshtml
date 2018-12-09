@@ -1,0 +1,127 @@
+﻿@model IEnumerable<Client>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="medium-title">All Company List</h2>
+<br />
+<a id="AddNew" class="btn btn-border btn-sm" tabindex="0" aria-controls="example" href="Admin/Client/Add"><span>New</span></a>
+<table id="clientstable" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Company Name</th>
+            <th>Website </th>
+            <th>Contact Person</th>
+            <th>Contact Email</th>
+            <th>Address</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td></td>
+                <td>@item.Id</td>
+                <td>@item.CompanyName</td>
+                <td>@item.WebsiteUrl</td>
+                <td>@item.ContactPerson</td>
+                <td>@item.ContactEmail</td>
+                <td>@item.Address</td>
+                <td>
+
+                    <a asp-area="Admin" asp-controller="Client" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                </td>
+                <td>
+                    <form id="deleteclient" method="post" asp-area="Admin" asp-controller="Client" asp-action="Delete" asp-route-id="@item.Id">
+                        <a href="#" onclick="document.getElementById('deleteclient').submit()">Delete</a>
+                    </form>
+                </td>
+                <td>
+
+                    <a asp-area="Admin" asp-controller="Client" asp-action="Detail" asp-route-id="@item.Id">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+
+<button id="btnRegister" class="btn btn-common" type="button">Register</button>
+<br />
+
+@section Scripts {
+    <script>
+    var clienttable = $('#clientstable').DataTable({
+        responsive: true,
+        select: true,
+        columnDefs: [{
+            orderable: false,
+            className: 'select-checkbox',
+            targets: 0
+        },
+        { "visible": false, targets: 1 }
+        ],
+        //buttons: [
+        //    {
+        //        text: 'Get selected data',
+        //        action: function () {
+        //            var count = table.rows({ selected: true }).count();
+        //            events.prepend('<div>' + count + ' row(s) selected</div>');
+        //        }
+        //    }
+        //],
+        select: {
+            style: 'multi',
+            selector: 'td:first-child'
+        },
+        order: [[1, 'asc']]
+    });
+
+    $('#btnRegister').click(function () {
+        var count = clienttable.rows({ selected: true }).count();
+        if (count > 0) {
+            var rows = clienttable.rows({ selected: true }).data();
+            var successlist = [];
+            $('#loading').show();//show loading
+            $.each(rows, function (i, val) {
+                $.ajax({
+                    url: 'admin/client/AutoRegister/' + val[1],
+                    type: "POST",
+                    success: function (result) {
+                        if (result == "0") {
+                            successlist.push(result);
+                        }
+                        console.log(result);
+                        if (count == (i + 1)) {
+                            if (successlist.indexOf('1') == -1) {
+                                window.location.reload();
+                            }
+                            else {
+                                console.log('Error in sending credentials to the user');
+                                alert('Error in sending credentials to the user');
+                            }
+                        }
+
+                        $('#loading').fadeOut();
+                        alert('Credentials has been sent to the clients');
+                    },
+                    error(xhr, status, error) {
+                        console.log(status);
+                        $('#loading').fadeOut();
+                    }
+
+                });
+            })
+        }
+
+    });
+    </script>
+}
+<br />
+<br />

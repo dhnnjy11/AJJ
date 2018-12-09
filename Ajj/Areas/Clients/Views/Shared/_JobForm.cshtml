@@ -1,0 +1,338 @@
+﻿@using Ajj.Areas.Clients.Models
+@model ClientJobViewModel
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="BusinessStream" class="control-label required">
+                業界
+            </label>
+            <select class="form-control" asp-for="BusinessstreamID" asp-items="Model.businessstreams" data-error="Please select province" required autofocus></select>
+        </div>
+    </div>
+    <div class="col-sm-6 ">
+        <input type="hidden" asp-for="JobId" />
+        <input type="hidden" asp-for="ClientID" />
+        <div class="form-group">
+            <label for="JobTitle" class="control-label required">
+                案件タイトル
+            </label>
+            <select class="form-control" asp-for="JobCategoryId" asp-items="Model.JobCategories" required autofocus></select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="ContractType" class="control-label required">
+                契約
+            </label>
+            @*<input type="text" placeholder="" class="form-control" asp-for="ContractType" required>*@
+            <select asp-for="ContractType" class="form-control" required>
+                <option value="">-- 選択 --</option>
+                <option >アルバイト</option>
+                <option value="part-time">パート</option>
+                <option value="full-time">正社員</option>
+                <option>契約社員</option>
+                <option>派遣社員</option>
+                <option>その他</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="NeededStaff" class="control-label required">
+                必要なスタッフ数
+            </label>
+            @*<input type="text" placeholder="" class="form-control" asp-for="NeededStaff">*@
+            <select asp-for="NeededStaff" class="form-control" required>
+                <option value="">-- 選択 --</option>
+                <option>1-5</option>
+                <option>5-10</option>
+                <option>10-15</option>
+                <option>20-25</option>
+                <option>More than 25</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label asp-for="WorkStartTime" class="control-label">
+                始業時間
+            </label>
+            
+            <select asp-for="WorkStartTime" class="form-control">
+                <option value="">-- 選択 --</option>
+                <option>12:00 AM</option>
+                @for (int i = 1; i < 11; i++)
+                {
+                    <option>@i:00 AM</option>
+                }
+                <option>12:00 PM</option>
+                @for (int i = 1; i < 12; i++)
+                {
+                    <option>@i:00 PM</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label asp-for="WorkEndTime" class="control-label">
+                終業時間
+            </label>
+            <select asp-for="WorkEndTime" class="form-control">
+                <option value="">-- 選択 --</option>
+                <option>12:00 AM</option>
+                @for (int i = 1; i < 11; i++)
+                {
+                    <option>@i:00 AM</option>
+                }
+                <option>12:00 PM</option>
+                @for (int i = 1; i < 12; i++)
+                {
+                    <option>@i:00 PM</option>
+                }
+
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <label class="control-label">
+            年齢
+        </label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label asp-for="MinAge" class="control-label">
+                以上
+            </label>
+            <select asp-for="MinAge" class="form-control">
+                <option value="0">-- 選択 --</option>
+                @for (int i = 18; i < 66; i++)
+                {
+                    <option>@i</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label asp-for="MaxAge" class="control-label">
+                未満
+            </label>
+            <select asp-for="MaxAge" class="form-control">
+                <option value="100">-- 選択 --</option>
+                @for (int i = 18; i < 66; i++)
+                {
+                    <option>@i</option>
+                }
+
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group required">
+            <label for="Workinghour" class="control-label required">
+                勤務時間/日
+            </label>
+            <select asp-for="Workinghour" placeholder="" class="form-control" required>
+                <option value="">-- 選択 --</option>
+                <option>Less than 4 hour</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+            </select>
+            @*<input type="text" placeholder="" class="form-control" asp-for="Workinghour">*@
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group required">
+            <label for="WorkingDaysPerWeek" class="control-label required">
+                勤務日数/週
+            </label>
+            <select asp-for="WorkingDaysPerWeek" placeholder="" class="form-control" required autofocus>
+                <option value="">-- 選択 --</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group required">
+            <label for="Salary" class="control-label">
+                時給 (円以上)
+            </label>
+            <select placeholder="" class="form-control" asp-for="Salary_Hourly" autofocus>
+                <option value="">-- 選択 --</option>
+                <option>800</option>
+                <option>850</option>
+                <option>900</option>
+                <option>950</option>
+                <option>1000</option>
+                <option>1050</option>
+                <option>1100</option>
+                <option>1200</option>
+                <option>1300</option>
+                <option>1500</option>
+                <option>1600</option>
+                <option>1700</option>
+            </select>
+        </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group required">
+                <label for="Salary" class="control-label">
+                    月給 (円以上)
+                </label>
+                <select placeholder="" class="form-control" asp-for="Salary_Monthly" autofocus>
+                    <option value="">-- 選択 --</option>
+                    <option>150000</option>
+                    <option>160000</option>
+                    <option>200000</option>
+                    <option>210000</option>
+                    <option>220000</option>
+                    <option>230000</option>
+                    <option>240000</option>
+                    <option>250000</option>
+                    <option>260000</option>
+                    <option>270000</option>
+                    <option>280000</option>
+                    <option>290000</option>
+                    <option>300000</option>
+                    <option>350000 </option>
+                </select>
+            </div>
+        </div>
+   
+    </div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label for="TransportationFee" class="control-label required">
+                交通費
+            </label>
+            <div class="row">
+
+                <div class="col-md-3">
+                    <label class="radio-inline">
+                        <input type="radio" value="Y" asp-for="TrasportationIncluded">支給します
+                    </label>
+                </div>
+                <div class="col-md-3">
+                    <label class="radio-inline">
+                        <input type="radio" value="N" asp-for="TrasportationIncluded" checked="checked">支給しない
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.form-group -->
+</div>
+<div class="row">
+    <div id="maxTransporationDiv" style="display:none" class="col-sm-6">
+        <label for="maxlimit" class="control-label required" style="display:inline-block">支給する場合の上限</label>
+        <input type="text" style="display:none" placeholder="" class="form-control" asp-for="TransportationFee">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label for="TransportationFee" class="control-label required">
+                必要な日本語レベル
+            </label>
+            <div>
+                <input type="radio" asp-for="JapaneseLevel" value="Not Required" checked="checked" /> <span style="margin:10px;vertical-align:top">日本語不要 </span>
+                <input type="radio" class="" asp-for="JapaneseLevel" value="Basic Conversation" /> <span style="margin:10px;vertical-align:top">ゆっくり話せば理解できるレベル</span>
+                <input type="radio" class="" asp-for="JapaneseLevel" value="N5 or similar skill" /> <span style="margin:10px;vertical-align:top">飲食店にてオーダーを聞けるレベル</span>
+                <input type="radio" class="" asp-for="JapaneseLevel" value="N4 or similar skill" /> <span style="margin:10px;vertical-align:top">ビジネスレベル(違和感なくコニュニケーションとれる)</span>
+                <input type="radio" class="" asp-for="JapaneseLevel" value="N2 or similar skill" /> <span style="margin:10px;vertical-align:top">流暢</span>
+            </div>
+        </div>
+    </div>
+</div>
+<p id="postalnotfound" class="alert alert-danger" style="display:none">Postal Code not found</p>
+<span asp-validation-for="CityName" class="text-danger"></span>
+<div class="row">
+    <div class="col-sm-3">
+
+        <div class="form-group">
+            <label for="postalAddress" class="control-label required">Postal Address</label>
+            <div class="row">
+                <div class="col-sm-4" style="padding-right:0px">
+                    <input type="text" id="postalAddress1" placeholder="" class="form-control" name="PostalAddrss1" asp-for="PostalAddrss1" maxlength="3" data-error="Please enter three digits" autofocus pattern="^[0-9]{3}$" required>
+                </div><div class="col-sm-1"><h2>-</h2></div>
+                <div class="col-sm-6">
+                    <input type="text" id="postalAddress2" placeholder="" class="form-control" name="PostalAddrss2" asp-for="PostalAddrss2" maxlength="4" data-error="Please enter four digits" autofocus pattern="^[0-9]{4}$" required>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+            <div id="injapanProvince">
+                <label for="province" class="control-label required">Province</label>
+                <select class="form-control" asp-for="ProvinceID" asp-items="Model.Provinces" data-error="Please select province" autofocus readonly></select>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+            <label for="city" class="control-label required">City</label>
+            <input type="text" asp-for="CityName" placeholder="" class="form-control" name="CityName" readonly>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+            <label for="city" class="control-label required">Town</label>
+            <input type="text" asp-for="Town" placeholder="" class="form-control" name="Town" readonly>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+
+            <label for="address" class="control-label required">Address</label>
+            <input type="text" id="address" placeholder="" class="form-control" asp-for="Address" required data-error="please enter address">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label asp-for="Status" class="control-label required">
+                Do you want to publish ?
+            </label>
+            <div class="row">
+
+                <div class="col-md-3">
+                    <label class="radio-inline">
+                        <input type="radio" value="true" asp-for="Status">Yes
+                    </label>
+                </div>
+                <div class="col-md-3">
+                    <label class="radio-inline">
+                        <input type="radio" value="false" asp-for="Status">No
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.form-group -->
+</div>

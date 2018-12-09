@@ -1,0 +1,72 @@
+﻿<table id="jobstable" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Id</th>
+            <th>
+                案件タイトル<!--Job Title-->
+            </th>
+            <th>
+                給与
+            </th>
+            <th>
+                案件を
+            </th>
+            <th>
+                ステータス<!--Status-->
+            </th>
+            <th>
+                申し込みのあった候補者数
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td></td>
+            <td>@item.JobId</td>
+            <td>@item.JobTitle</td>
+            <td>@item.Salary</td>
+            <td>@item.PostDate.ToString("yyyy/M/dd")</td>
+            @if (item.Status == true)
+            {
+                <td>
+                    公開
+                </td>
+            }
+            else
+            {
+                <td>
+                    非公開
+                </td>
+            }
+            <td>
+                <a asp-area="clients" asp-controller="Job" asp-action="Candidates" asp-route-id="@item.JobId">
+                    候補者
+                    ( @item.CandidateApplied )
+                </a>
+            </td>
+            <td>
+                <a class="btn-sm btn-success" asp-area="clients" asp-controller="Job" asp-action="Edit" asp-route-id="@item.JobId">
+                    編集
+                </a>
+            </td>
+            <td>
+                <a class="btn-sm btn-success" asp-area="clients" asp-controller="Job" asp-action="Detail" asp-route-id="@item.JobId">
+                    詳細
+                </a>
+            </td>
+            <td>
+
+                <form method="post" asp-area="clients" asp-controller="Job" asp-action="Delete" asp-route-id="@item.JobId">
+                    <input class="deletejob btn-sm btn-danger" type="submit" value="削除" />
+                </form>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

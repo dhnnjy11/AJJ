@@ -1,0 +1,82 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Ajj.Models
+
+@inject SignInManager<ApplicationUser> signInManager
+@inject UserManager<ApplicationUser> userManager
+
+<ul class="nav navbar-nav">
+    <li>
+        <a is-active-route asp-area="Admin" asp-controller="Client" asp-action="Index">
+            Potential Clients
+        </a>
+    </li>
+    <li>
+        <a is-active-route asp-area="Admin" asp-controller="Client" asp-action="List">
+            Registered Clients
+        </a>
+    </li>
+    <li>
+        <a is-active-route asp-area="Admin" asp-controller="JobInfo" asp-action="IndexAsync">
+            Job List
+        </a>
+    </li>
+    <li>
+        <a is-active-route asp-area="Admin" asp-controller="User" asp-action="JobApplications">
+            Job Apply
+        </a>
+    </li>
+    <li>
+        <a is-active-route asp-area="Admin" asp-controller="User" asp-action="All">
+            User List
+        </a>
+    </li>
+    @*<li>
+            <a is-active-route asp-area="Admin" asp-controller="User" asp-action="Register">
+                Register User
+            </a>
+        </li>*@
+
+    @*<li class="drop">
+            <a href="~/Admin">
+                Manage Client
+                <i class="fa fa-angle-down"></i>
+                <div class="ripple-container"></div>
+            </a>
+            <ul class="dropdown">
+                <li>
+                    <a href="~/Admin/Client/Potential">
+                        Potential Client
+                    </a>
+                </li>
+                <li>
+                    <a href="~/Admin/Client/Registered">
+                        Registered Client
+                    </a>
+                </li>
+            </ul>
+        </li>*@
+    @*<li>
+            <a href="#">
+                Manage User
+                <i class="fa fa-angle-down"></i>
+                <div class="ripple-container"></div>
+            </a>
+            <ul class="dropdown">
+                <li>
+                    <a href="#">
+                        Job Seekers
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Register New User
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Manage Role
+                    </a>
+                </li>
+            </ul>
+        </li>*@
+</ul>

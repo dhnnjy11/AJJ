@@ -1,0 +1,217 @@
+﻿@{
+    ViewData["Title"] = "JobDetails";
+    
+}
+
+
+@section additionalMeta {
+    <meta name="keywords" content="@Html.Raw(Model.JobTitle), jobs for foreigners, jobs in japan">
+    <meta name="description" content="@Html.Raw(Model.JobTitle) job in @Model.ProvinceName, @Html.Raw(Model.CityName_En), @Html.Raw(Model.Town_En)" />
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="medium-title">Job Detail</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-sm-12 col-xs-12">
+            <div class="header-detail clearfix">
+                <div class="header-content pull-left">
+                    <span class="job-title-2">@Model.JobTitle</span>
+                </div>
+                @*<div class="detail-company pull-right text-right">
+                        <p><span>Date Posted: @Model.PostDate.ToString("yyyy/M/dd")</span></p>
+                    </div>*@
+                <div class="detail-company pull-right text-right">
+                    <!--<p><span>Date Posted: @Model.PostDate</span></p>-->
+                </div>
+            </div>
+            <div class="content-area">
+                <div class="clearfix">
+                    <div class="box">
+                        <h4>Job Description</h4>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-3">Contract Type:</div>
+                            <div class="col-md-9"><strong>@Model.ContractType</strong></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">Salary Hourly:</div>
+                            @if (!string.IsNullOrEmpty(Model.Salary_Hourly))
+                            {
+                                <div class="col-md-9"><strong>@Model.Salary_Hourly</strong>&nbsp;per hour</div>
+
+                            }
+
+                        </div>
+                        <div class="row">
+                            @if (!string.IsNullOrEmpty(Model.Salary_Monthly))
+                            {
+                                <div class="col-md-3">Salary Monthly:</div>
+                                <div class="col-md-9"><strong>@Model.Salary_Monthly</strong>&nbsp;per Month</div> 
+
+                            }
+                        </div>
+                        <div class="row">
+
+                            @if (!string.IsNullOrWhiteSpace(Model.StartWorkTime) && !string.IsNullOrWhiteSpace(Model.EndWorkTime))
+                            {
+                                <div class="col-md-3">Working Time:</div>
+                                <div class="col-md-9"><strong>@Model.StartWorkTime</strong>&nbsp;-&nbsp;@Model.EndWorkTime</div>
+
+                            }
+
+                        </div>
+                        <div class="row">
+
+                            @if (Model.MinAge != 0 && Model.MaxAge != 0)
+                            {
+                                <div class="col-md-3">Required Age:</div>
+                                <div class="col-md-9"><strong>@Model.MinAge</strong>&nbsp;-&nbsp;<strong>@Model.MaxAge</strong>&nbsp;<span>years</span></div>
+                            }
+
+                        </div>
+                        <div class="row">
+                            @if (!string.IsNullOrEmpty(Model.WorkingHours))
+                            {
+                                <div class="col-md-3">Working hours /day:</div>
+                                <div class="col-md-9"><strong>@Model.WorkingHours</strong></div>
+                            }
+
+                        </div>
+                        <div class="row">
+                            @if (!string.IsNullOrEmpty(Model.WorkingDays))
+                            {
+                                <div class="col-md-3">Working days /week:</div>
+                                <div class="col-md-9"><strong>@Model.WorkingDays</strong></div>
+                            }
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">Work Location:</div>
+                            <div class="col-md-9">
+                                <strong>
+                                    <span class="type-posts">@Model.ProvinceName</span>
+                                    <span class="type-posts">@Model.CityName</span>
+                                    <span class="type-posts">@Model.Town</span>
+                                    <span class="type-posts">@Model.WorkingAddress</span>
+                                </strong>
+                            </div>
+                        </div>
+                        <hr />
+
+                        @if (Model.JapaneseLevel != "")
+                        {
+                            <h4>Requirements</h4>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-3">Japanese Level:</div>
+                                <div class="col-md-9">@Model.JapaneseLevel</div>
+                            </div>
+                            <hr />
+
+                        }
+
+                        <h4>Other</h4>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-3">Transportation Fees:</div>
+                            @if (Model.TransportationFee == "Y")
+                            {
+                                <div class="col-md-9">included</div>
+
+                            }
+                            else
+                            {
+                                <div class="col-md-9">Not included</div>
+
+                            }
+                        </div>
+                        <hr />
+                        <button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary center-block">Apply for this Job Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12">
+            <aside>
+                <div class="sidebar">
+                    <div class="box">
+                        <h2 class="small-title">Company Details</h2>
+                        <ul class="detail-list">
+                            <li>
+                                <a href="#">Company</a>
+                                <span class="type-posts">@Model.CompanyName</span>
+                            </li>
+                            <li>
+                                <a href="#">Industry</a>
+                                <span class="type-posts">@Model.IndustryName</span>
+                            </li>
+                            <li>
+                                <a href="#">Website</a>
+                                <span class="type-posts">@Model.WebsiteUrl</span>
+                            </li>
+                            <!--<li>
+                                <a href="#">Address</a>
+                                <span class="type-posts">@Model.WorkingAddress</span>
+                                <span class="type-posts">@Model.Town</span>
+                                <span class="type-posts">@Model.CityName</span>
+                                <span class="type-posts">@Model.ProvinceName</span>
+                            </li>-->
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="top: 10%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h1 class="modal-title alert alert-warning" id="lineModalLabel">Apply</h1>
+                <h3>The Application has not been completed yet.</h3>
+            </div>
+            <div class="modal-body">
+                <!-- content goes here -->
+                <form asp-controller="Job" asp-action="JobDetailsAsync" method="post" asp-route-id="@Model.JobID">
+                    <input type="hidden" value="@Model.JobSeekerId" />
+                    <div class="form-group">
+                        <label for="JobTitle">Job Title</label>
+                        <input type="text" class="form-control" id="JobTitle" value="@Model.JobTitle" placeholder="Job Title" readonly>
+
+                        <input type="hidden" class="form-control" id="JobID" value="@Model.JobID" name="JobID">
+                    </div>
+                    <div class="form-group">
+                        <label for="IsExperience">Have you experienced this work?</label>
+                        <input type="radio" name="IsExperience" id="IsExperience" tabindex="2" placeholder="experience" value="true"> Yes
+                        <input type="radio" name="IsExperience" id="IsExperience" tabindex="2" placeholder="experience" value="False"> No
+                    </div>
+                    <div class="form-group">
+                        <label for="Experience">If your choice "Yes", please write the period.</label><br />
+                        <select id="ExpYear" class="form-control" name="ExpYear" style="float:left;width:48%;">
+                            <option selected=""> years</option>
+                            @for (int i = 0; i <= 50; i++)
+                            {
+                                <option>@i</option>
+                            }
+                        </select>
+                        <select id="ExpMonth" class="form-control " name="ExpMonth" style="float:right;width:48%;">
+                            <option selected=""> Months</option>
+                            @for (int i = 0; i <= 12; i++)
+                            {
+                                <option>@i</option>
+                            }
+                        </select>
+                    </div>
+                    <br /><br />
+                    <button type="submit" class="btn btn-common">Apply for this Job Now</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
