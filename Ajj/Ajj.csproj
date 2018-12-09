@@ -13,6 +13,7 @@
     <Compile Remove="Areas\Clients\Views\Clients\**" />
     <Compile Remove="Data\**" />
     <Compile Remove="JobData\**" />
+    <Compile Remove="obj\**" />
     <Compile Remove="Repository\**" />
     <Compile Remove="wwwroot\css\**" />
     <Compile Remove="wwwroot\images\**" />
@@ -22,6 +23,7 @@
     <Content Remove="Areas\Clients\Views\Clients\**" />
     <Content Remove="Data\**" />
     <Content Remove="JobData\**" />
+    <Content Remove="obj\**" />
     <Content Remove="Repository\**" />
     <Content Remove="wwwroot\css\**" />
     <Content Remove="wwwroot\images\**" />
@@ -31,6 +33,7 @@
     <EmbeddedResource Remove="Areas\Clients\Views\Clients\**" />
     <EmbeddedResource Remove="Data\**" />
     <EmbeddedResource Remove="JobData\**" />
+    <EmbeddedResource Remove="obj\**" />
     <EmbeddedResource Remove="Repository\**" />
     <EmbeddedResource Remove="wwwroot\css\**" />
     <EmbeddedResource Remove="wwwroot\images\**" />
@@ -40,6 +43,7 @@
     <None Remove="Areas\Clients\Views\Clients\**" />
     <None Remove="Data\**" />
     <None Remove="JobData\**" />
+    <None Remove="obj\**" />
     <None Remove="Repository\**" />
     <None Remove="wwwroot\css\**" />
     <None Remove="wwwroot\images\**" />
